@@ -1,124 +1,363 @@
 /* ============================================================================
    INDICIO · Ventanal
-   Portado de la versión anterior, que era mejor. Lo que lo define:
+   «Tarde en el consultorio»
 
-   1. Los paños de color van a sangre y son iguales entre sí: son el fondo.
-   2. La portada mide 92vh, para que quede paño visible arriba y abajo.
-   3. El texto va en un VANO —un bloque de crema que no ocupa el ancho y se
-      abre sobre la banda—. Eso es lo que se lee como un ventanal.
-   4. Mucho aire. Ninguna caja encierra las listas.
+   La página abre dentro de su consultorio: su tarjeta, en su sala, con la luz
+   de la tarde. A partir de ahí es una visita. Las fotos son los ventanales y
+   el contenido flota delante en vanos.
 
-   Los colores son los suyos. Los cuatro paños en tono medio-oscuro, para que
-   el vano resalte.
+   Un solo motivo se repite: el arco. Es la forma más mid-century que existe
+   —puertas, ventanas, respaldos— y rima con las curvas de su voluta. Va en
+   las dos puertas de entrada, en el vano de psicoterapia y en los marcos de
+   foto. En nada más, para que siga significando algo.
+
+   Colores: los seis de su hoja. El crema de sus insignias solo como texto
+   sobre oscuro, nunca de fondo. Blanco, ninguno.
    ========================================================================== */
-body{font-size:1.03rem}
-:focus-visible{outline:2.5px solid var(--terracota);outline-offset:3px}
-.w{width:min(100% - 2.6rem,1180px)}
 
-/* Ritmo amplio: el aire es el material principal de este boceto */
-.s{padding:clamp(4.4rem,11vw,8rem) 0;border-top:5px solid var(--terracota)}
-.s--olivo{border-top-color:var(--cacao)}
-.s--cacao{border-top-color:var(--arena)}
-.s--arena,.s--terracota{border-top-color:var(--cacao)}
+:root{
+  --terracota:#A03812; --negro:#000000; --mostaza:#AC8632;
+  --olivo:#5C6046;     --arena:#C7B296; --cacao:#513029;
+  --crema:#EAE2D7;
 
-/* ── La portada ── */
-.pt{position:relative;min-height:min(92vh,820px);display:grid;align-items:center;
-  padding:clamp(3rem,7vw,5rem) 0;isolation:isolate;overflow:hidden}
-.pt__b{position:absolute;inset:0;z-index:0;display:grid;
-  grid-template-columns:repeat(4,1fr)}
-.pt__b i{background:var(--olivo)}
-.pt__b i:nth-child(2){background:var(--cacao)}
-/* El tercer paño es la foto de su ventana, velada con terracota para que
-   siga siendo un paño de color y no una fotografía suelta. Ella sugirió
-   ponerlas de fondo, y en Ventanal es literalmente el motivo. */
-.pt__b i:nth-child(3){background:var(--terracota)}
-.pt__b i:nth-child(3){background-image:linear-gradient(rgba(160,56,18,.72),rgba(160,56,18,.72)),
-  url(../assets/img/consultorio-escritorio.jpg);
-  background-size:cover;background-position:center}
-.pt__b i:nth-child(4){background:var(--mostaza)}
-.pt__b i:nth-child(5){display:none}
-.pt>.w{position:relative;z-index:1}
-.pt__g{display:grid;grid-template-columns:minmax(0,42rem) auto;
-  align-items:center;
-  /* Sin hueco entre filas: el vano es un solo bloque, no dos */
-  column-gap:clamp(.9rem,2vw,1.6rem);row-gap:0}
+  --disp:'Jost',system-ui,-apple-system,sans-serif;
+  --txt:'Raleway',system-ui,-apple-system,sans-serif;
+  --e:cubic-bezier(.22,.8,.2,1);
 
-/* El vano: titular, entrada, botones y credenciales en un solo bloque */
-.pt__t{background:var(--crema);color:var(--negro);grid-column:1;grid-row:1;
-  padding:clamp(2rem,4.6vw,3.4rem) clamp(2rem,4.6vw,3.4rem) 0}
-.pt h1{font-size:clamp(1.9rem,4.4vw,3.05rem);font-weight:300;
-  letter-spacing:var(--ls-tight);max-width:17ch}
-.pt h1 em{font-style:normal;font-weight:500;color:var(--terracota)}
-.pt__d{margin-top:1.2rem;max-width:38ch;opacity:.78}
-.firma{grid-column:1;grid-row:2;background:var(--crema);color:var(--negro);
-  margin:0;padding:0 clamp(2rem,4.6vw,3.4rem) clamp(1.8rem,3.4vw,2.6rem);
-  display:grid;gap:0 1.5rem;
-  grid-template-columns:repeat(auto-fit,minmax(min(100%, 142px),1fr))}
-.firma>div{padding:.85rem 0 0;border-top:1px solid rgba(0,0,0,.16)}
-.firma dt{font-size:var(--t-xs);font-weight:700;letter-spacing:var(--ls-caps);
-  text-transform:uppercase;opacity:.6}
-.firma dd{margin:.3rem 0 0;font-family:var(--disp);font-size:var(--t-base);font-weight:300}
+  --t-sm:.875rem; --t-base:1rem; --t-md:1.125rem; --t-lg:1.375rem;
+  --t-xl:clamp(1.55rem,2.8vw,2rem);
+  --t-2xl:clamp(1.95rem,4.2vw,3.1rem);
+  --arco:999px 999px 6px 6px;
 
-/* El logotipo, en su propio plano: cae sobre un paño u otro según el ancho */
-.lock{background:var(--cacao);color:var(--crema);grid-column:2;grid-row:1 / span 2;
-  padding:clamp(1.6rem,3vw,2.4rem) clamp(1.1rem,2.2vw,1.7rem);
-  align-self:stretch;display:grid;align-content:center;justify-items:center;
-  text-align:center}
-.lock .lg{color:var(--crema);width:clamp(112px,13vw,172px);margin:0}
-.lock__b{color:var(--crema);opacity:.86;margin-top:1rem;max-width:14ch}
+  /* Las barras compartidas: cacao con crema, acento arena (5.67 en los dos
+     sentidos, como texto y como relleno). */
+  --mv-bg:#513029; --mv-fg:#EAE2D7; --mv-acc:#C7B296;
+  --mv-on-acc:#513029; --mv-line:rgba(234,226,215,.22);
+}
 
-/* ── Apertura de sección, con mucho aire debajo ── */
-.cab{border-bottom:0;padding-bottom:0;margin-bottom:clamp(2.4rem,6vw,4rem)}
-.cab__n{font-weight:300;opacity:.22}
-.cab h2{font-weight:300;max-width:17ch}
+*,*::before,*::after{box-sizing:border-box}
+*{margin:0}
+html{scroll-behavior:smooth;overflow-x:clip;-webkit-text-size-adjust:100%}
+body{font-family:var(--txt);font-size:var(--t-base);line-height:1.62;
+  background:var(--cacao);color:var(--crema);overflow-x:clip;
+  font-variant-numeric:lining-nums tabular-nums;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+button{font:inherit;color:inherit}
+h1,h2,h3{font-family:var(--disp);font-weight:300;line-height:1.1;
+  letter-spacing:-.012em;text-wrap:balance}
+p{text-wrap:pretty}
+:focus-visible{outline:2.5px solid currentColor;outline-offset:4px;border-radius:4px}
+.w{width:min(100% - 2.6rem,1200px);margin-inline:auto}
+[id]{scroll-margin-top:72px}
 
-/* ── Índice: paños con parteluz ── */
-.idx{gap:3px}
-.idx__c:hover{transform:none}
+/* Grano de película: lo que hace que el color plano parezca papel impreso */
+body::after{content:'';position:fixed;inset:0;z-index:1300;pointer-events:none;opacity:.06;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23g)'/%3E%3C/svg%3E")}
 
-/* ── Supuestos: paños de ventanal con parteluz grueso ── */
-/* El parteluz se invierte: el fondo lo pone la seccion y las fichas van un
-   punto mas claras. Antes el hueco lo pintaba el contenedor, asi que con
-   siete fichas en cuatro columnas quedaba una celda vacia a la vista. */
-.sup{list-style:none;margin:0;padding:0;display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(min(100%, 272px),1fr));gap:3px}
-.sup li{background:color-mix(in srgb,var(--fg) 9%,transparent);padding:1.8rem 1.6rem;
-  display:grid;grid-template-columns:auto 1fr;gap:0 1rem;align-items:baseline;
-  min-height:9rem}
-.sup__n{font-family:var(--disp);font-size:var(--t-lg);font-weight:300;opacity:.6}
-.sup__t{font-size:var(--t-base);line-height:var(--lh-ui)}
+/* ── Piezas comunes ──────────────────────────────────────────────────────── */
+.k{font-family:var(--txt);font-size:.75rem;font-weight:700;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--acc)}
+.sl{display:block;background:currentColor;aspect-ratio:242/260;
+  -webkit-mask:url(../assets/img/indicio-sello.png) center/contain no-repeat;
+  mask:url(../assets/img/indicio-sello.png) center/contain no-repeat}
 
-/* ── Temas: pastillas, más grandes que en Retícula ── */
-.mot li{padding:.72rem 1.3rem;font-size:var(--t-md)}
+.b{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:52px;
+  padding:.85rem 1.7rem;border:1.5px solid transparent;border-radius:999px;
+  font:600 .95rem/1.2 var(--txt);letter-spacing:.02em;text-decoration:none;cursor:pointer;
+  transition:transform .4s var(--e),background-color .4s var(--e),color .4s var(--e)}
+.b:hover{transform:translateY(-2px)}
+.b--crema{background:var(--crema);color:var(--cacao)}
+.b--cacao{background:var(--cacao);color:var(--crema)}
+.b--mostaza{background:var(--mostaza);color:var(--negro)}
+.b--linea{border-color:currentColor;background:transparent}
+.acc{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2.2rem}
+.acc--centro{justify-content:center}
 
-/* ── Par de tarjetas ── */
-.par{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%, 272px),1fr));
-  gap:3px;margin-top:3px}
-.par__c{padding:1.8rem 1.6rem;border:0;border-radius:0}
-.par__c h3{font-size:var(--t-md);font-weight:400;margin-bottom:.7rem}
+/* La franja: sus colores de un tirón, en anchos desiguales. Separa la
+   portada del resto y vuelve a aparecer encima del pie. */
+.franja{display:grid;grid-template-columns:3fr 2fr 4fr 1fr 2fr;height:10px}
+.franja i:nth-child(1){background:var(--olivo)}
+.franja i:nth-child(2){background:var(--terracota)}
+.franja i:nth-child(3){background:var(--arena)}
+.franja i:nth-child(4){background:var(--mostaza)}
+.franja i:nth-child(5){background:var(--olivo)}
+/* Encima del pie esta la seccion mostaza: ahi el cuarto segmento se fundia */
+.pie .franja i:nth-child(4){background:var(--cacao)}
 
-/* ── Formación ── */
-.via{border-radius:0}
+/* ── Fondos: cada uno declara su texto y su acento ───────────────────────── */
+.sec{position:relative;padding:clamp(4.5rem,10vw,8rem) 0;color:var(--fg)}
+.sec--cacao{background:var(--cacao);
+  --fg:var(--crema); --fg2:rgba(234,226,215,.82); --acc:var(--arena); --rule:rgba(234,226,215,.2)}
+.sec--arena{background:var(--arena);
+  --fg:var(--negro); --fg2:rgba(0,0,0,.76); --acc:var(--cacao); --rule:rgba(0,0,0,.18)}
+.sec--terracota{background:var(--terracota);
+  --fg:var(--crema); --fg2:var(--crema); --acc:var(--crema); --rule:rgba(234,226,215,.3)}
+.sec--mostaza{background:var(--mostaza);
+  --fg:var(--negro); --fg2:rgba(0,0,0,.86); --acc:var(--negro); --rule:rgba(0,0,0,.24)}
 
-/* ── Mapa a sangre, como un ventanal ── */
-.mapa-caja{margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);width:100vw;
-  border-radius:0}
-#mapa{height:clamp(320px,50vh,480px)}
+/* Su patrón de volutas, casi invisible, sobre la arena */
+.sec--patron::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background:var(--cacao);opacity:.05;
+  -webkit-mask:url(../assets/img/indicio-patron.png) 0 0/190px repeat;
+  mask:url(../assets/img/indicio-patron.png) 0 0/190px repeat}
+.sec > .w{position:relative}
 
-/* ── Cierre y pie ── */
-.cierre{padding:clamp(4rem,10vw,7rem) 0;border-top:5px solid var(--cacao)}
-.cierre .sl{color:var(--acc)}
-.fin{background:var(--negro);color:var(--arena)}
-.fin .sl{color:var(--mostaza)}
+.cab{max-width:46rem;margin-bottom:clamp(2.4rem,5vw,3.6rem)}
+.cab__n{font-family:var(--disp);font-weight:300;font-size:clamp(2.4rem,5.4vw,4rem);
+  line-height:1;color:var(--acc);opacity:.4;margin-bottom:.5rem}
+.cab .k{margin-bottom:1rem}
+.cab h2{font-size:var(--t-2xl);max-width:18ch}
+.cab__d{margin-top:1.2rem;font-size:var(--t-md);color:var(--fg2);max-width:58ch}
 
-@media(max-width:860px){
-  .pt{min-height:auto;padding:2.4rem 0 3rem}
-  .pt__b{grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(2,1fr)}
-  .pt__g{grid-template-columns:1fr;gap:0}
-  .lock{grid-column:1;grid-row:1;padding:1.4rem 1.2rem}
-  .lock .lg{width:clamp(96px,26vw,132px)}
-  .lock__b{margin-top:.7rem;max-width:24ch}
-  .pt__t{grid-row:2;padding:1.6rem 1.4rem 0}
-  .firma{grid-row:3;padding:0 1.4rem 1.6rem}
-  .cab h2{max-width:none}
+/* ── 1 · Portada: dentro del consultorio ─────────────────────────────────── */
+.hero{position:relative;isolation:isolate;overflow:hidden;
+  min-height:calc(100vh - 60px);min-height:calc(100svh - 60px);
+  display:grid;grid-template-rows:1fr auto;background:var(--cacao);color:var(--crema);
+  --acc:var(--arena)}
+/* La foto es el paño derecho, no el fondo entero: así la tarjeta se ve
+   completa y el texto va sobre cacao liso, sin depender de lo que haya
+   detrás. */
+.hero__foto{position:absolute;inset:0 0 0 36%;z-index:-2;
+  background:url(../assets/img/1.jpg) 68% 46%/cover no-repeat;
+  animation:asienta 2.6s var(--e) both}
+@keyframes asienta{from{transform:scale(1.08)}to{transform:scale(1)}}
+/* El velo oscurece solo donde va el texto: la tarjeta queda a la vista */
+/* La fusión: cacao liso hasta donde empieza la foto, y de ahí se deshace
+   sobre su borde izquierdo. Abajo, un poco más oscuro para las credenciales. */
+.hero__velo{position:absolute;inset:0;z-index:-1;
+  background:
+    linear-gradient(90deg,var(--cacao) 36%,rgba(81,48,41,.55) 48%,rgba(81,48,41,0) 64%),
+    linear-gradient(0deg,rgba(81,48,41,.9) 0%,rgba(81,48,41,0) 26%)}
+.hero__in{align-self:center;padding:clamp(4rem,10vh,7rem) 0 2.6rem}
+.hero__in > *{max-width:35rem}
+.hero .k{margin-bottom:1.6rem}
+.hero h1{font-size:clamp(2.1rem,3.9vw,3.35rem);line-height:1.1}
+.hero h1 em{font-style:normal;color:var(--arena)}
+.hero__d{margin-top:1.5rem;font-size:var(--t-md);font-weight:500;line-height:1.6;max-width:33rem}
+/* Las credenciales van en una franja cacao a sangre, como el pie de una
+   foto: a la derecha caían sobre el sofá iluminado y se quedaban en 3.64. */
+.hero__cred{display:grid;grid-template-columns:repeat(4,1fr);gap:0 2rem;
+  padding:1.3rem 0 1.6rem;background:var(--cacao);
+  box-shadow:0 0 0 100vmax var(--cacao);clip-path:inset(0 -100vmax)}
+.hero__cred dt{font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--arena)}
+.hero__cred dd{margin-top:.35rem;font-family:var(--disp);font-weight:400;font-size:1.05rem}
+
+.hero__in > *{animation:sube 1.1s var(--e) both}
+.hero__in > :nth-child(1){animation-delay:.3s}
+.hero__in > :nth-child(2){animation-delay:.45s}
+.hero__in > :nth-child(3){animation-delay:.6s}
+.hero__in > :nth-child(4){animation-delay:.75s}
+.hero__cred{animation:sube 1.1s var(--e) .9s both}
+@keyframes sube{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+
+/* ── 2 · ¿Qué necesitas? Dos puertas en arco ─────────────────────────────── */
+.pregunta{font-size:var(--t-xl);text-align:center;margin-bottom:clamp(2.2rem,5vw,3.4rem)}
+.puertas{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,3vw,2.6rem);
+  max-width:62rem;margin-inline:auto}
+.puerta{display:flex;flex-direction:column;align-items:center;text-align:center;
+  border-radius:var(--arco);color:var(--crema);text-decoration:none;
+  padding:clamp(3rem,6vw,4.6rem) clamp(1.6rem,4vw,3rem) clamp(2.2rem,4vw,3rem);
+  --acc:var(--crema);
+  transition:transform .6s var(--e)}
+.puerta:hover{transform:translateY(-6px)}
+.puerta--olivo{background:var(--olivo)}
+.puerta--terracota{background:var(--terracota)}
+.puerta__sl{width:clamp(64px,8vw,86px);color:var(--crema);margin-bottom:clamp(2.2rem,5vw,4rem)}
+.puerta .k{letter-spacing:.2em}
+.puerta__t{font-family:var(--disp);font-weight:400;font-size:var(--t-lg);line-height:1.2;
+  margin-top:.9rem;max-width:16ch}
+.puerta__d{margin-top:.8rem;font-size:.95rem;font-weight:500;max-width:28ch}
+.puerta__b{margin-top:1.6rem;font-size:.8rem;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;border-bottom:1.5px solid currentColor;padding-bottom:.2rem}
+
+/* ── 3 · Servicios ───────────────────────────────────────────────────────── */
+.sup{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0 3.4rem}
+.sup li{display:grid;grid-template-columns:3.2rem 1fr;align-items:baseline;
+  padding:1.15rem 0;border-bottom:1px solid var(--rule);font-size:1.02rem;font-weight:500}
+/* 27 px: letra grande, así que 3.34 sobre arena cumple (pide 3) */
+.sup__n{font-family:var(--disp);font-weight:300;font-size:1.7rem;line-height:1;color:var(--terracota)}
+.otros__k{margin:clamp(3rem,6vw,4.2rem) 0 1.2rem}
+.otros{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.otro{background:var(--cacao);color:var(--crema);border-radius:6px;padding:1.8rem 1.6rem}
+.otro h3{font-weight:400;font-size:var(--t-lg);margin-bottom:.7rem}
+.otro p{font-size:.95rem;color:rgba(234,226,215,.84)}
+
+/* ── 4 · Solicita una cotización ─────────────────────────────────────────── */
+.coti{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2rem,6vw,5rem);align-items:start}
+.coti__t .k{margin-bottom:1rem}
+.coti__t h2{font-size:var(--t-2xl);max-width:14ch}
+.coti__t p{margin-top:1.2rem;font-size:var(--t-md);max-width:30rem}
+.coti__t .b{margin-top:1.8rem}
+/* El formulario va en un paño cacao dentro de la terracota: 1.70 de salto,
+   tonal, pero se lee como panel. Los campos, en crema: se ve dónde empiezan. */
+.cotiza{background:var(--cacao);border-radius:6px;padding:clamp(1.6rem,3.4vw,2.6rem);
+  --mv-fg:var(--crema); --mv-acc:var(--arena); --mv-on-acc:var(--cacao);
+  --mv-line:rgba(234,226,215,.24)}
+.cotiza .fc{margin:0}
+.cotiza .fc__abre{display:none}
+.cotiza .fc__cuerpo{grid-template-rows:1fr}
+.cotiza .fc form{grid-template-columns:1fr;margin-top:0;padding-top:0;border-top:0}
+.cotiza .fc__campo > label,.cotiza .fc legend{color:var(--crema);font-weight:700;font-size:var(--t-sm)}
+.cotiza .fc__campo input,.cotiza .fc__campo select,.cotiza .fc__campo textarea{
+  background:var(--crema);color:var(--negro);border:1.5px solid transparent;border-radius:6px}
+.cotiza .fc__campo input:focus,.cotiza .fc__campo select:focus,.cotiza .fc__campo textarea:focus{
+  border-color:var(--mostaza);outline:none}
+.cotiza .fc__campo ::placeholder{color:rgba(0,0,0,.52)}
+.cotiza .fc__campo select option{background:var(--crema);color:var(--negro)}
+.cotiza .fc__ayuda{color:rgba(234,226,215,.82)}
+.cotiza .fc__vista{background:rgba(234,226,215,.08);color:var(--crema);border-color:var(--mv-line)}
+.cotiza .fc__vista h4{color:var(--arena)}
+.cotiza .fc__enviar{background:var(--mostaza);color:var(--negro);border-color:var(--mostaza)}
+
+/* ── 5 · Psicoterapia: su sala de fondo y un vano en arco delante ───────── */
+.terapia{position:relative;isolation:isolate;background:var(--olivo);color:var(--crema);
+  min-height:min(100vh,1000px);display:flex;align-items:center;padding:clamp(5rem,11vw,8rem) 0;
+  --acc:var(--crema)}
+.terapia__foto{position:absolute;inset:0;z-index:-1;
+  background:url(../assets/img/2.jpg) 50% 56%/cover no-repeat}
+.vano{max-width:35rem;background:var(--olivo);border-radius:var(--arco);text-align:center;
+  padding:clamp(5rem,9vw,6.6rem) clamp(1.6rem,4vw,3rem) clamp(2.4rem,4vw,3.2rem)}
+.vano .cab__n{margin-bottom:.4rem}
+.vano .k{margin-bottom:1rem}
+.vano h2{font-size:var(--t-2xl);margin-inline:auto;max-width:14ch}
+.enfoque{margin:1.6rem auto 1.8rem;padding-bottom:1.6rem;border-bottom:1px solid rgba(234,226,215,.3);
+  font-family:var(--disp);font-weight:400;font-size:var(--t-md);line-height:1.45;max-width:26rem}
+.temas{list-style:none;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem}
+.temas li{border:1.5px solid rgba(234,226,215,.55);border-radius:999px;
+  padding:.5rem 1rem;font-size:.92rem;font-weight:500;line-height:1.35}
+.vano__pie{margin-top:1.8rem;font-size:.92rem;font-weight:500}
+
+/* ── 6 · Conoce a tu psic. ───────────────────────────────────────────────── */
+.bio{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(2.4rem,6vw,5.4rem);align-items:start}
+.bio__foto{position:sticky;top:96px;border-radius:var(--arco);overflow:hidden;background:var(--cacao)}
+.bio__foto img{width:100%;aspect-ratio:3/4;object-fit:cover}
+/* Con descendiente y no con >: en telefono _detalle.js mete los parrafos
+   dentro de .bio-mas para plegarlos, y con > dejaban de tener estilo. */
+.bio__texto p{color:var(--fg2);font-size:1.02rem;max-width:62ch}
+.bio__texto p + p,.bio-mas{margin-top:1.1rem}
+.bio__texto > p:first-child{font-family:var(--disp);font-weight:300;font-size:var(--t-lg);
+  line-height:1.5;color:var(--fg);margin-bottom:.4rem}
+.bio__texto blockquote{margin-top:2.4rem;padding-left:1.4rem;border-left:3px solid var(--terracota)}
+.bio__texto blockquote p{font-family:var(--disp);font-weight:300;font-size:var(--t-xl);
+  line-height:1.3;color:var(--cacao)}
+
+/* ── 7 · Formación ───────────────────────────────────────────────────────── */
+.grupos{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2.4rem,6vw,5rem);align-items:start}
+.grupo h3{font-family:var(--txt);font-weight:700;font-size:.75rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--arena);padding-bottom:.9rem;
+  border-bottom:1.5px solid rgba(199,178,150,.5)}
+.creds{list-style:none;padding:0}
+.creds li{display:grid;grid-template-columns:1fr auto;gap:.2rem 1.4rem;
+  padding:1.1rem 0;border-bottom:1px solid var(--rule)}
+.creds strong{grid-column:1;font-weight:600;font-size:1rem;line-height:1.4}
+.creds span{grid-column:1;font-size:.9rem;color:var(--fg2)}
+.creds time{grid-column:2;grid-row:1;font-family:var(--disp);font-size:.9rem;
+  color:var(--arena);white-space:nowrap;text-align:right}
+
+/* ── 8 · Consultorio ─────────────────────────────────────────────────────── */
+.mapa-caja{position:relative;isolation:isolate;z-index:0;overflow:hidden;
+  height:clamp(320px,50vh,480px);background:var(--arena)}
+#mapa{width:100%;height:100%}
+/* OpenStreetMap pinta casi en blanco; se vira a pergamino para que el mapa
+   sea arena y no un hueco blanco en mitad de la mostaza. */
+.leaflet-tile-pane{filter:sepia(.55) saturate(.72) brightness(.9) contrast(.96)}
+.leaflet-container{font-family:var(--txt)}
+.leaflet-control-zoom a{background:var(--crema)!important;color:var(--cacao)!important;
+  border-color:rgba(81,48,41,.2)!important}
+.leaflet-control-attribution{background:var(--crema)!important;color:var(--cacao)!important}
+.leaflet-control-attribution a{color:var(--terracota)!important}
+.pin{display:grid;place-items:center;width:30px;height:30px;background:var(--terracota);
+  border:2px solid var(--crema);border-radius:50% 50% 50% 4px;transform:rotate(-45deg)}
+.pin__c{width:9px;height:9px;border-radius:50%;background:var(--crema)}
+.mapa-toque{position:absolute;inset:0;z-index:500;display:grid;place-items:center;border:0;
+  background:rgba(81,48,41,.86);color:var(--crema);font-weight:600;cursor:pointer}
+.mapa-toque[hidden]{display:none}
+.mapa-aviso{padding:1rem;text-align:center}
+
+.donde{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(2rem,6vw,5rem);
+  align-items:start;margin-top:clamp(2.4rem,5vw,3.4rem)}
+.rutas{display:flex;flex-wrap:wrap;gap:.75rem}
+.datos{display:grid;grid-template-columns:1fr 1fr;gap:0 2rem;margin-top:2.2rem}
+.datos > div{padding:1rem 0;border-top:1px solid var(--rule)}
+.datos dt{font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--fg2)}
+.datos dd{margin-top:.35rem;font-weight:600}
+.datos dd span{display:block;font-weight:500;font-size:.92rem;color:var(--fg2);margin-top:.15rem}
+.donde__foto{border-radius:var(--arco);overflow:hidden;background:var(--cacao)}
+.donde__foto img{width:100%;aspect-ratio:3/4;object-fit:cover}
+
+/* ── Pie ─────────────────────────────────────────────────────────────────── */
+.pie{background:var(--negro);color:var(--crema);text-align:center}
+.pie__in{padding:clamp(4.4rem,9vw,6.4rem) 0 clamp(2.6rem,5vw,3.4rem)}
+.pie__sl{width:84px;margin:0 auto 1.8rem;color:var(--mostaza)}
+.pie h2{font-size:var(--t-2xl)}
+.pie__in > p{margin:1rem auto 0;color:rgba(234,226,215,.8);max-width:40ch}
+.pie__legal{margin-top:clamp(3rem,6vw,4.4rem)!important;padding-top:1.6rem;
+  border-top:1px solid rgba(234,226,215,.16);font-size:.8rem;line-height:1.8;
+  color:rgba(234,226,215,.7)!important;max-width:none!important}
+
+/* ── Entrada al hacer scroll ─────────────────────────────────────────────── */
+.js .rv{opacity:0;transform:translateY(22px);
+  transition:opacity 1s var(--e),transform 1s var(--e)}
+.js .rv.on{opacity:1;transform:none}
+.puertas .rv:nth-child(2),.otros .rv:nth-child(2),.grupos .rv:nth-child(2){transition-delay:.12s}
+.otros .rv:nth-child(3){transition-delay:.24s}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .rv{opacity:1;transform:none}
+}
+
+/* ── Tableta y teléfono ──────────────────────────────────────────────────── */
+@media(max-width:900px){
+  .sec{padding:clamp(3.4rem,11vw,4.6rem) 0}
+
+  /* La portada se apila: primero la foto con la tarjeta, luego el texto
+     sobre cacao liso. Superpuesto en vertical, el texto tapaba la tarjeta. */
+  .hero{display:block;min-height:0}
+  .hero__foto{position:relative;inset:auto;height:54svh;min-height:300px;
+    background-position:48% 50%}
+  .hero__foto::after{content:'';position:absolute;inset:auto 0 0 0;height:40%;
+    background:linear-gradient(0deg,var(--cacao),rgba(81,48,41,0))}
+  .hero__velo{display:none}
+  .hero__in{padding:.4rem 0 2rem}
+  .hero__in > *{max-width:none}
+  .hero .k{margin-bottom:1rem}
+  .hero h1{font-size:clamp(1.8rem,7.2vw,2.35rem)}
+  .hero__cred{grid-template-columns:1fr 1fr;gap:.2rem 1.4rem;padding:1rem 0 1.6rem}
+  .hero__cred > div{padding:.5rem 0}
+
+  .puertas{grid-template-columns:1fr;max-width:26rem}
+  .puerta__sl{margin-bottom:clamp(2.4rem,14vw,4rem)}
+
+  .sup{grid-template-columns:1fr}
+  .otros{grid-template-columns:1fr}
+  .coti{grid-template-columns:1fr}
+
+  /* La sala va arriba y el vano sube a medias sobre ella */
+  .terapia{display:block;min-height:0;padding:0 0 3.4rem;background:var(--olivo)}
+  .terapia__foto{position:relative;inset:auto;z-index:0;height:62svh;min-height:340px;
+    background-position:50% 60%}
+  .terapia__in{position:relative;z-index:1;margin-top:-16svh}
+  .vano{margin-inline:auto}
+
+  .bio{grid-template-columns:1fr}
+  .bio__foto{position:relative;top:auto;max-width:20rem;margin-inline:auto}
+  .grupos{grid-template-columns:1fr}
+  .donde{grid-template-columns:1fr}
+  .donde__foto{max-width:20rem;margin-inline:auto}
+}
+/* Objetivos tactiles: 44 px como minimo, que es el de Apple */
+@media(pointer:coarse){
+  .tn__m{display:flex;flex-direction:column;justify-content:center;min-height:44px}
+  .leaflet-control-zoom a{width:44px!important;height:44px!important;line-height:44px!important}
+  .datos dd a{display:inline-block;padding:.7rem 0;min-height:44px}
+}
+@media(max-width:560px){
+  .acc .b,.rutas .b,.coti__t .b{flex:1 1 100%}
+  .datos{grid-template-columns:1fr}
+  .creds li{grid-template-columns:1fr}
+  .creds time{grid-column:1;grid-row:auto;text-align:left;margin-top:.3rem}
+  .sup li{grid-template-columns:2.6rem 1fr}
 }

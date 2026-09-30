@@ -68,10 +68,10 @@ CURSOS = [
  (u'Curso de elaboraci\u00f3n de peritaje psicol\u00f3gico', u'Centro de SubjetividadEs, Identidad Cl\u00ednica y Forense', u'Julio 2024')]
 
 FOTOS = [
- ('consultorio-sala.jpg',       u'Sala del consultorio, con sof\u00e1 verde y sill\u00f3n de terciopelo'),
- ('consultorio-general.jpg',    u'Vista general del consultorio, con el escritorio al fondo'),
- ('consultorio-escritorio.jpg', u'Escritorio junto a la ventana, con luz natural'),
- ('consultorio-tarjeta.jpg',    u'Tarjeta de Indicio sostenida dentro del consultorio')]
+ ('2.jpg', u'Sala del consultorio, con sof\u00e1 verde y sill\u00f3n de terciopelo'),
+ ('4.jpg', u'Vista general del consultorio, con el escritorio al fondo'),
+ ('3.jpg', u'Escritorio junto a la ventana, con luz natural'),
+ ('1.jpg', u'Tarjeta de Indicio sostenida dentro del consultorio')]
 
 # Sus archivos, no una reconstruccion. Van como mascara para poder tenirlos:
 # el mismo logo sirve sobre claro y sobre oscuro sin tener dos versiones.
@@ -343,8 +343,6 @@ if __name__ == '__main__':
     salidas = [
       ('reticula.html', u'Indicio · Retícula', '_reticula.css', '#C7B296', 'rt',
        ['s--arena', 's--cacao', 's--mostaza', 's--olivo', 's--arena', 's--terracota', 's--mostaza', 's--terracota', 's--cacao']),
-      ('ventanal.html', u'Indicio · Ventanal', '_ventanal.css', '#C7B296', 'vn',
-       ['s--arena', 's--cacao', 's--olivo', 's--mostaza', 's--arena', 's--olivo', 's--cacao', 's--mostaza', 's--terracota']),
     ]
     for arch, tit, css, tema, cl, fondos in salidas:
         h = cabeza(tit, css, tema, fondos[8]) + portada(cl, fondos[0]) + cuerpo(fondos[1:]) + pie()
