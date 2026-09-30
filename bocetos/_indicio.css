@@ -412,3 +412,29 @@ h1,h2,h3{margin:0;font-family:var(--disp);line-height:var(--lh-head);text-wrap:b
     linear-gradient(135deg,currentColor 50%,transparent 50%);
   background-position:calc(100% - 1.15rem) 55%,calc(100% - .8rem) 55%;
   background-size:.36rem .36rem,.36rem .36rem;background-repeat:no-repeat}
+
+/* ── El marco de trabajo y el enfoque ────────────────────────────────────
+   Dos frases que en su documento encabezan servicios y psicoterapia. Van
+   con peso, porque no son relleno: dicen desde dónde trabaja. */
+.sub{font-size:var(--t-xs);font-weight:700;letter-spacing:var(--ls-caps);
+  text-transform:uppercase;color:var(--acc);margin:clamp(2rem,4vw,3rem) 0 1rem}
+.enfoque{font-family:var(--disp);font-weight:300;font-size:var(--t-md);
+  max-width:var(--m-lead);margin-bottom:clamp(1.6rem,3vw,2.2rem);
+  padding-bottom:1rem;border-bottom:1px solid var(--rule)}
+
+/* ── Las fotos del consultorio ───────────────────────────────────────────
+   Son suyas y son el argumento: el sitio es la puerta a un espacio que ya
+   existe. La primera manda, porque es la que enseña la sala. */
+.fotos{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;
+  margin-top:clamp(2rem,4vw,3rem)}
+.foto{margin:0;overflow:hidden;background:var(--card)}
+.foto img{width:100%;height:100%;object-fit:cover;aspect-ratio:3/4;
+  transition:transform .6s var(--e)}
+.foto:hover img{transform:scale(1.03)}
+.foto:first-child{grid-column:span 2;grid-row:span 2}
+.foto:first-child img{aspect-ratio:1}
+@media(max-width:760px){
+  .fotos{grid-template-columns:repeat(2,1fr)}
+  .foto:first-child{grid-column:span 2;grid-row:auto}
+  .foto:first-child img{aspect-ratio:4/3}
+}

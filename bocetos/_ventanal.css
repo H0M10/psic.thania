@@ -28,7 +28,13 @@ body{font-size:1.03rem}
   grid-template-columns:repeat(4,1fr)}
 .pt__b i{background:var(--olivo)}
 .pt__b i:nth-child(2){background:var(--cacao)}
+/* El tercer paño es la foto de su ventana, velada con terracota para que
+   siga siendo un paño de color y no una fotografía suelta. Ella sugirió
+   ponerlas de fondo, y en Ventanal es literalmente el motivo. */
 .pt__b i:nth-child(3){background:var(--terracota)}
+.pt__b i:nth-child(3){background-image:linear-gradient(rgba(160,56,18,.72),rgba(160,56,18,.72)),
+  url(../assets/img/consultorio-escritorio.jpg);
+  background-size:cover;background-position:center}
 .pt__b i:nth-child(4){background:var(--mostaza)}
 .pt__b i:nth-child(5){display:none}
 .pt>.w{position:relative;z-index:1}

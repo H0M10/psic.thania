@@ -13,15 +13,21 @@ WA  = 'https://wa.me/524421375118?text=Hola%20Thania%2C%20vi%20la%20p%C3%A1gina%
 TEL = 'tel:+524421375118'
 LAT, LNG = '20.572439', '-100.4184025'
 
-BIO_LEAD = u'Soy psic\u00f3loga con formaci\u00f3n y experiencia profesional en los \u00e1mbitos cl\u00ednico y forense. Dentro del \u00e1rea forense trabajo principalmente en materia familiar, lo que me ha permitido comprender las distintas situaciones y necesidades que pueden presentarse en las familias. En el \u00e1rea cl\u00ednica, mi pr\u00e1ctica est\u00e1 dedicada exclusivamente al acompa\u00f1amiento de adolescentes y juventudes.'
+# ── Contenido, del documento que actualizo el 16 de septiembre de 2026 ──
+ENTRADA = u'Un espacio para comprender lo que ocurre, encontrar respuestas y construir nuevas formas de avanzar.'
+ENTRADA_2 = u'En INDICIO brindo atenci\u00f3n psicol\u00f3gica especializada a adolescentes y juventudes, as\u00ed como servicios de evaluaci\u00f3n e intervenci\u00f3n en el \u00e1mbito de la psicolog\u00eda forense. Colaboro con personas, familias, instituciones y profesionales del \u00e1mbito jur\u00eddico.'
+
+MARCO = u'En INDICIO se trabaja con perspectiva de derechos humanos, g\u00e9nero, infancia y adolescencia, adem\u00e1s de la aplicaci\u00f3n del an\u00e1lisis de contexto y enfoque diferencial.'
+
+BIO_LEAD = u'\u00a1Hola! Soy Thania Huerta, psic\u00f3loga con formaci\u00f3n y experiencia profesional en los \u00e1mbitos cl\u00ednico y forense. Dentro del \u00e1rea forense trabajo principalmente en materia familiar, lo que me ha permitido comprender las distintas situaciones y necesidades que pueden presentarse en las familias. En el \u00e1rea cl\u00ednica, mi pr\u00e1ctica est\u00e1 dedicada al acompa\u00f1amiento de adolescentes y juventudes.'
 
 BIO = [
- (u'Por qu\u00e9 la adolescencia',
-  u'Eleg\u00ed trabajar con esta poblaci\u00f3n porque considero que la adolescencia es un momento decisivo en la construcci\u00f3n de las personas adultas del futuro. Acompa\u00f1arlos oportunamente puede generar cambios importantes en el presente, mientras desarrollan su identidad y su propia manera de relacionarse con el mundo.'),
+ (u'Por qu\u00e9 esta poblaci\u00f3n',
+  u'Eleg\u00ed trabajar con esta poblaci\u00f3n porque considero que es un momento decisivo en la construcci\u00f3n de las personas adultas del futuro. Acompa\u00f1arlos oportunamente puede generar cambios importantes en el presente, mientras desarrollan su identidad y su propia manera de relacionarse con el mundo.'),
  (u'C\u00f3mo se cruzan las dos \u00e1reas',
-  u'Mi experiencia cl\u00ednica me permite crear espacios de crecimiento, cuestionamiento y desarrollo personal. Por su parte, mi formaci\u00f3n forense me ha ense\u00f1ado a comprender a cada persona dentro de un contexto m\u00e1s amplio. Aunque ambos \u00e1mbitos tienen objetivos y l\u00edmites \u00e9ticos diferentes, juntos enriquecen mi manera de comprender el comportamiento humano.'),
+  u'Mi experiencia cl\u00ednica me permite crear espacios de crecimiento, cuestionamiento y desarrollo personal. Por su parte, mi formaci\u00f3n forense me ha ense\u00f1ado a comprender a cada persona dentro de un contexto m\u00e1s amplio. Aunque ambos \u00e1mbitos tienen objetivos y l\u00edmites diferentes, juntos enriquecen mi manera de comprender el comportamiento humano.'),
  (u'C\u00f3mo trabajo',
-  u'Disfruto estudiar y mantenerme en constante actualizaci\u00f3n. Procuro que mi trabajo se sustente en evidencia cient\u00edfica, pero tambi\u00e9n creo que la terapia puede ser cercana y creativa: disfruto crear materiales y adaptar actividades y herramientas a la personalidad, los intereses y las necesidades de cada adolescente.'),
+  u'Disfruto estudiar y mantenerme en constante actualizaci\u00f3n. Procuro que mi trabajo se sustente en evidencia cient\u00edfica, pero tambi\u00e9n creo que la terapia puede ser cercana y creativa: disfruto crear materiales y adaptar actividades y herramientas a la personalidad, los intereses y las necesidades de cada consultante.'),
 ]
 CITA = u'Creo que la terapia puede ser cercana y creativa.'
 
@@ -33,37 +39,39 @@ SUPUESTOS = [u'Guarda y custodia',
  u'Identificaci\u00f3n de factores de riesgo y protecci\u00f3n',
  u'Afectaciones psicol\u00f3gicas']
 
-MOTIVOS = [u'Depresi\u00f3n', u'Regulaci\u00f3n emocional',
+OTROS = [
+ (u'Metapericiales', u'Revisi\u00f3n t\u00e9cnica de un dictamen ya emitido, para valorar su m\u00e9todo y sus conclusiones.'),
+ (u'Asesor\u00eda en psicolog\u00eda', u'Acompa\u00f1amiento sobre el componente psicol\u00f3gico de un asunto.'),
+ (u'An\u00e1lisis de contexto', u'Lectura del entorno en el que ocurren los hechos, con enfoque diferencial.'),
+]
+
+ENFOQUE = u'El enfoque terap\u00e9utico que se maneja en INDICIO es la Terapia Cognitivo Conductual.'
+MOTIVOS = [u'Ansiedad', u'Depresi\u00f3n', u'Regulaci\u00f3n emocional',
  u'Autoestima, inseguridad, identidad y autoconocimiento',
  u'Habilidades sociales', u'Problemas de conducta en adolescentes',
  u'Cambios en la din\u00e1mica familiar derivados de procesos judiciales',
- u'Desarrollo de habilidades parentales y fortalecimiento del v\u00ednculo',
+ u'Desarrollo de habilidades parentales y fortalecimiento del v\u00ednculo entre madres, padres e hijos',
  u'Educaci\u00f3n sexual', u'Presi\u00f3n acad\u00e9mica']
 
-# Formacion. Tomada de la tabla de su documento -no de la version anterior
-# del sitio, que traia cinco instituciones cambiadas y dos estudios de menos-.
-# Cada registro es (estudio, institucion, fechas), ordenado del mas reciente.
-# Formacion. Tomada de la tabla de su documento -no de la version anterior
-# del sitio, que traia cinco instituciones cambiadas y dos estudios de menos-.
-# Cada registro es (estudio, institucion, fechas).
-#
-# El orden es por rango academico, no por fecha: primero la licenciatura, que
-# es el titulo que habilita, luego la maestria, despues certificaciones y
-# diplomados, y al final cursos y seminarios. Quien lee credenciales busca
-# primero el grado, no el ano.
-CLINICA = [
- (u'Licenciatura en Psicología', u'Universidad Mondragón México', u'Ago 2020 – may 2024'),
- (u'Maestría en Psicoterapia Cognitivo Conductual', u'Centro de Psicoterapia Cognitiva', u'May 2026 – en curso'),
- (u'Diplomado en Psicoterapia Cognitivo Conductual', u'UAQ · IMFAPSI', u'Ene – nov 2025'),
- (u'Diplomado en Psicoterapia Infantojuvenil', u'CAPCIA', u'Ago 2026 – en curso')]
+ACADEMICA = [
+ (u'Maestr\u00eda en Psicoterapia Cognitivo Conductual', u'Centro de Psicoterapia Cognitiva', u'Mayo 2026 \u2013 en curso'),
+ (u'Maestr\u00eda en Investigaci\u00f3n y Evaluaci\u00f3n Criminal y Forense', u'Instituto de Ciencia Aplicada', u'Mayo 2024 \u2013 mayo 2026'),
+ (u'Licenciatura en Psicolog\u00eda', u'Universidad Mondrag\u00f3n M\u00e9xico', u'Ago 2020 \u2013 may 2024')]
 
-FORENSE = [
- (u'Maestría en Investigación y Evaluación Criminal y Forense', u'Instituto de Ciencia Aplicada', u'May 2024 – may 2026'),
- (u'Certificación en Análisis de Contexto en la Investigación Criminal', u'Consejo Certificador en Psicología Forense', u'Mar – may 2025'),
- (u'Curso de elaboración de peritajes judiciales', u'Poder Judicial del Estado de Querétaro', u'Mayo 2025'),
- (u'Curso-taller de peritajes psicológicos en guarda y custodia', u'FORENPSIC · con perspectiva de infancia', u'Feb – may 2025'),
- (u'Seminario en disociación y trauma en víctimas de violencia', u'Instituto de Ciencia Aplicada', u'Sep – dic 2024'),
- (u'Curso de elaboración de peritaje psicológico', u'Centro de SubjetividadEs, Identidad Clínica y Forense', u'Julio 2024')]
+CURSOS = [
+ (u'Diplomado en Psicoterapia Infantojuvenil', u'CAPCIA', u'Ago 2026 \u2013 en curso'),
+ (u'Diplomado en Psicoterapia Cognitivo Conductual', u'Universidad Aut\u00f3noma de Quer\u00e9taro \u00b7 IMFAPSI', u'Ene \u2013 nov 2025'),
+ (u'Curso de elaboraci\u00f3n de peritajes judiciales', u'Poder Judicial del Estado de Quer\u00e9taro', u'Mayo 2025'),
+ (u'Certificaci\u00f3n en An\u00e1lisis de Contexto en la Investigaci\u00f3n Criminal', u'Consejo Certificador en Psicolog\u00eda Forense \u00b7 Ciencia Aplicada', u'Mar \u2013 may 2025'),
+ (u'Curso-taller de peritajes psicol\u00f3gicos en casos de guarda y custodia', u'FORENPSIC \u00b7 con perspectiva de infancia', u'Feb \u2013 may 2025'),
+ (u'Seminario especializado en disociaci\u00f3n y trauma en v\u00edctimas de violencia', u'Instituto de Ciencia Aplicada', u'Sep \u2013 dic 2024'),
+ (u'Curso de elaboraci\u00f3n de peritaje psicol\u00f3gico', u'Centro de SubjetividadEs, Identidad Cl\u00ednica y Forense', u'Julio 2024')]
+
+FOTOS = [
+ ('consultorio-sala.jpg',       u'Sala del consultorio, con sof\u00e1 verde y sill\u00f3n de terciopelo'),
+ ('consultorio-general.jpg',    u'Vista general del consultorio, con el escritorio al fondo'),
+ ('consultorio-escritorio.jpg', u'Escritorio junto a la ventana, con luz natural'),
+ ('consultorio-tarjeta.jpg',    u'Tarjeta de Indicio sostenida dentro del consultorio')]
 
 # Sus archivos, no una reconstruccion. Van como mascara para poder tenirlos:
 # el mismo logo sirve sobre claro y sobre oscuro sin tener dos versiones.
@@ -129,20 +137,30 @@ def cab(num, clave, titulo, entrada=u''):
   </div>''' % (num, clave, titulo, e)
 
 def bloque_supuestos():
-    li = u''.join([u'\n    <li><span class="sup__n">%02d</span><span class="sup__t">%s</span></li>'
-                   % (i + 1, s) for i, s in enumerate(SUPUESTOS)])
+    li = u''.join([u'\n    <li><span class="sup__n">%02d</span>'
+                   u'<span class="sup__t">%s</span></li>' % (i + 1, s)
+                   for i, s in enumerate(SUPUESTOS)])
     return u'<ol class="sup">%s\n  </ol>' % li
 
+def bloque_otros():
+    u"Los tres servicios que su documento agrupa aparte de los peritajes."
+    c = u''.join([u'\n    <article class="par__c">'
+                  u'<h3>%s</h3><p>%s</p></article>' % (t, d) for t, d in OTROS])
+    cta = (u'\n    <article class="par__c par__c--acc">'
+           u'<h3>C\u00f3mo empieza</h3>'
+           u'<p>Cu\u00e9ntame el asunto y la fecha l\u00edmite, y te devuelvo el alcance'
+           u' y el costo.</p>'
+           u'<p class="par__l"><a href="#cotizacion">Solicita una cotizaci\u00f3n</a></p>'
+           u'</article>')
+    return u'<p class="sub">Otros servicios</p>\n  <div class="par">' + c + cta + u'\n  </div>'
+
 def bloque_motivos():
-    u"""Lista corrida, no fichas. Son temas para hablar, no supuestos legales:
-    piden ligereza, y de paso rompen la igualdad con la seccion de al lado."""
-    return u'<ul class="mot">%s\n  </ul>' % u''.join(
-        [u'\n    <li><span>%s</span></li>' % m for m in MOTIVOS])
+    u"Los temas, en pastillas, con el enfoque terapeutico delante."
+    li = u''.join([u'\n    <li><span>%s</span></li>' % m for m in MOTIVOS])
+    return u'<p class="enfoque">%s</p>\n  <ul class="mot">%s\n  </ul>' % (ENFOQUE, li)
 
 def bloque_formacion():
-    u"""Cada registro en tres partes: estudio, institucion y fechas. Las
-    fechas salen de la tabla de su documento; la de la licenciatura venia
-    invertida -agosto 2024 a mayo 2024- y se corrige a agosto 2020."""
+    u"Dos grupos, como su documento: los grados por un lado y los cursos por otro."
     def via(nombre, lista, clase):
         li = u''.join([u'\n      <li><strong>%s</strong>'
                        u'<em>%s</em><time>%s</time></li>' % (a, b, f)
@@ -150,8 +168,8 @@ def bloque_formacion():
         return (u'<div class="via via--%s">\n      <h3>%s</h3>\n'
                 u'      <ol class="linea">%s\n      </ol>\n    </div>') % (clase, nombre, li)
     return u'<div class="vias">\n    %s\n    %s\n  </div>' % (
-        via(u'V\u00eda cl\u00ednica', CLINICA, 'c'),
-        via(u'V\u00eda forense', FORENSE, 'f'))
+        via(u'Formaci\u00f3n acad\u00e9mica', ACADEMICA, 'a'),
+        via(u'Seminarios, diplomados y certificaciones', CURSOS, 'c'))
 
 def bloque_indice():
     u"""Entrada por tarea, no por publico. NN/G desaconseja la navegacion por
@@ -184,23 +202,37 @@ def bloque_bio():
   <blockquote class="cita"><p>%s</p></blockquote>''' % (BIO_LEAD, p, CITA)
 
 def bloque_mapa():
-    return u'''<div class="mapa-caja">
-    <div id="mapa" data-lat="%s" data-lng="%s" data-zoom="17"
-         role="application" aria-label="Mapa del consultorio"></div>
-    <button class="mapa-toque" id="mapaToque" type="button" hidden><span>Toca para mover el mapa</span></button>
-    <p class="mapa-aviso" id="mapaAviso" hidden>No se pudo cargar el mapa.</p>
-  </div>
-  <div class="rutas">
-    <a class="b b--p" href="https://www.google.com/maps/dir/?api=1&amp;destination=%s,%s" target="_blank" rel="noopener">Google Maps</a>
-    <a class="b b--s" href="https://waze.com/ul?ll=%s,%s&amp;navigate=yes" target="_blank" rel="noopener">Waze</a>
-    <a class="b b--s" href="https://maps.apple.com/?daddr=%s,%s" target="_blank" rel="noopener">Apple Maps</a>
-  </div>
-  <dl class="datos">
-    <div><dt>Direcci\u00f3n</dt><dd>Mauricio Garc\u00e9s 808, La Joya<span>76180 Santiago de Quer\u00e9taro, Qro.</span></dd></div>
-    <div><dt>Horario</dt><dd>Lunes a viernes, 9:00 a 14:00 y 16:00 a 21:00<span>S\u00e1bados de 9:00 a 13:00</span></dd></div>
-    <div><dt>Tel\u00e9fono</dt><dd><a href="%s">442 137 5118</a><span>Tambi\u00e9n por WhatsApp</span></dd></div>
-    <div><dt>C\u00e9dula</dt><dd>14661976<span>Consejo de Psicolog\u00eda Forense 25-08-63</span></dd></div>
-  </dl>''' % (LAT, LNG, LAT, LNG, LAT, LNG, LAT, LNG, TEL)
+    u"Mapa, rutas, datos practicos y las fotos reales del consultorio."
+    fotos = u''.join([u'\n    <figure class="foto"><img src="../assets/img/%s" alt="%s"'
+                      u' loading="lazy" decoding="async"></figure>' % (a, t)
+                      for a, t in FOTOS])
+    return (u'<div class="mapa-caja">\n'
+      u'    <div id="mapa" data-lat="%s" data-lng="%s" data-zoom="17"\n'
+      u'         role="application" aria-label="Mapa del consultorio"></div>\n'
+      u'    <button class="mapa-toque" id="mapaToque" type="button" hidden>'
+      u'<span>Toca para mover el mapa</span></button>\n'
+      u'    <p class="mapa-aviso" id="mapaAviso" hidden>No se pudo cargar el mapa.</p>\n'
+      u'  </div>\n'
+      u'  <div class="rutas">\n'
+      u'    <a class="b b--p" href="https://www.google.com/maps/dir/?api=1&amp;destination=%s,%s"'
+      u' target="_blank" rel="noopener">Google Maps</a>\n'
+      u'    <a class="b b--s" href="https://waze.com/ul?ll=%s,%s&amp;navigate=yes"'
+      u' target="_blank" rel="noopener">Waze</a>\n'
+      u'    <a class="b b--s" href="https://maps.apple.com/?daddr=%s,%s"'
+      u' target="_blank" rel="noopener">Apple Maps</a>\n'
+      u'  </div>\n'
+      u'  <dl class="datos">\n'
+      u'    <div><dt>Direcci\u00f3n</dt><dd>Calle Mauricio Garc\u00e9s 102, Col. La Joya'
+      u'<span>Santiago de Quer\u00e9taro, Qro.</span></dd></div>\n'
+      u'    <div><dt>Horario</dt><dd>Lunes a viernes, 9:00 a 14:00 y 16:00 a 21:00'
+      u'<span>S\u00e1bados de 9:00 a 13:00 \u00b7 domingo cerrado</span></dd></div>\n'
+      u'    <div><dt>Tel\u00e9fono</dt><dd><a href="%s">442 137 5118</a>'
+      u'<span>Tambi\u00e9n por WhatsApp</span></dd></div>\n'
+      u'    <div><dt>C\u00e9dula</dt><dd>14661976'
+      u'<span>Consejo certificador en psicolog\u00eda forense 25-08-63</span></dd></div>\n'
+      u'  </dl>\n'
+      u'  <div class="fotos">%s\n  </div>') % (
+      LAT, LNG, LAT, LNG, LAT, LNG, LAT, LNG, TEL, fotos)
 
 def bloque_cierre(fondo):
     return u'''<section class="cierre %s">
@@ -225,13 +257,8 @@ def bloque_cierre(fondo):
 </div></footer>''' % (fondo, sello('sl sl--c'), WA, TEL, sello('sl sl--f'))
 
 def cuerpo(clases):
-    u"""Orden nuevo: que hace antes de quien es. La biografia son 223 palabras
-    de prosa seguida, el bloque mas denso de la pagina, y estaba de primera:
-    quien llega buscando un peritaje tenia que atravesarla. Baja dos sitios.
-
-    Y cada lista toma una forma distinta -fichas, lista corrida, linea de
-    tiempo- porque forense, psicoterapia y formacion tenian exactamente la
-    misma, y por eso se leian como un solo apartado."""
+    u"""Orden y textos del documento que actualizo el 16 de septiembre: entrada,
+    servicios, psicoterapia, conoce a tu psic, formacion y consultorio."""
     return u"""
 <main>
 
@@ -243,17 +270,7 @@ def cuerpo(clases):
 <section class="s %s" id="forense"><div class="w">
   %s
   %s
-  <div class="par">
-    <article class="par__c">
-      <h3>Metapericiales y an\u00e1lisis t\u00e9cnicos</h3>
-      <p>Revisi\u00f3n t\u00e9cnica de un dictamen ya emitido, para valorar su m\u00e9todo y sus conclusiones.</p>
-    </article>
-    <article class="par__c par__c--acc">
-      <h3>C\u00f3mo empieza</h3>
-      <p>Cu\u00e9ntame el asunto y la fecha l\u00edmite, y te devuelvo el alcance y el costo.</p>
-      <p class="par__l"><a href="#cotizacion">Pedir una cotizaci\u00f3n</a></p>
-    </article>
-  </div>
+  %s
 </div></section>
 
 <section class="s %s" id="terapia"><div class="w">
@@ -279,18 +296,15 @@ def cuerpo(clases):
 %s
 </main>""" % (
    clases[0], bloque_indice(),
-   clases[1], cab(u'01', u'\u00c1rea forense',
-                  u'Cuando un proceso familiar necesita una valoraci\u00f3n psicol\u00f3gica',
-                  u'Trabajo con abogados, juzgados y particulares. Estos son los siete '
-                  u'supuestos en los que puedo intervenir.'),
-   bloque_supuestos(),
+   clases[1], cab(u'01', u'Servicios',
+                  u'Peritajes psicol\u00f3gicos en materia familiar', MARCO),
+   bloque_supuestos(), bloque_otros(),
    clases[2], cab(u'02', u'Psicoterapia', u'Temas en los que podemos trabajar',
                   u'Consulta para adolescentes y juventudes. Si lo que te pasa no est\u00e1 '
                   u'en la lista, escr\u00edbeme igual.'),
    bloque_motivos(),
-   clases[3], cab(u'03', u'Sobre m\u00ed', u'Hola, soy Thania'), bloque_bio(),
-   clases[4], cab(u'04', u'Formaci\u00f3n', u'En qu\u00e9 me he formado',
-                  u'Dos recorridos en paralelo, uno por cada \u00e1rea en la que trabajo.'),
+   clases[3], cab(u'03', u'Conoce a tu psic.', u'Hola, soy Thania'), bloque_bio(),
+   clases[4], cab(u'04', u'Formaci\u00f3n', u'En qu\u00e9 me he formado'),
    bloque_formacion(),
    clases[5], cab(u'05', u'Consultorio', u'D\u00f3nde nos vemos',
                   u'Abre la ruta directo en tu aplicaci\u00f3n, o mueve el mapa para '
@@ -299,20 +313,18 @@ def cuerpo(clases):
    bloque_cierre(clases[6]))
 
 def portada(clase, fondo):
-    u"""Texto a la izquierda, logotipo a la derecha y en grande, credenciales
-    cruzando debajo. Los tres son hijos directos de la rejilla: antes el
-    bloque de marca colgaba de dentro del texto y por eso no se podia colocar."""
+    u"""Texto a la izquierda, logotipo a la derecha, credenciales debajo.
+    El titular y la entrada son los suyos, del apartado ENTRADA."""
     return u"""
 <header class="pt %s %s" id="inicio">
   <div class="pt__b" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
   <div class="w pt__g">
   <div class="pt__t">
-    <h1>Acompa\u00f1o a <em>adolescentes</em> en consulta y a <em>familias</em> en procesos judiciales.</h1>
-    <p class="pt__d">Dos trabajos distintos, con l\u00edmites \u00e9ticos distintos.
-       Aqu\u00ed puedes ver cu\u00e1l de los dos es el que est\u00e1s buscando.</p>
+    <h1>%s</h1>
+    <p class="pt__d">%s</p>
     <div class="rutas rutas--2">
       <a class="b b--p" href="%s" target="_blank" rel="noopener">Escr\u00edbeme por WhatsApp</a>
-      <a class="b b--s" href="#cotizacion">Pedir una cotizaci\u00f3n</a>
+      <a class="b b--s" href="#cotizacion">Solicita una cotizaci\u00f3n</a>
     </div>
   </div>
   <div class="lock">
@@ -322,10 +334,10 @@ def portada(clase, fondo):
   <dl class="firma">
     <div><dt>Psic\u00f3loga</dt><dd>Thania Huerta</dd></div>
     <div><dt>C\u00e9dula profesional</dt><dd>14661976</dd></div>
-    <div><dt>Consejo de Psicolog\u00eda Forense</dt><dd>25-08-63</dd></div>
+    <div><dt>Consejo certificador</dt><dd>25-08-63</dd></div>
     <div><dt>Consultorio</dt><dd>Santiago de Quer\u00e9taro</dd></div>
   </dl>
-</div></header>""" % (clase, fondo, WA, logo('lg lg--p'))
+</div></header>""" % (clase, fondo, ENTRADA, ENTRADA_2, WA, logo('lg lg--p'))
 
 if __name__ == '__main__':
     salidas = [
