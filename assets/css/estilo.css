@@ -59,8 +59,8 @@ body::after{content:'';position:fixed;inset:0;z-index:1300;pointer-events:none;o
 .k{font-family:var(--txt);font-size:.75rem;font-weight:700;letter-spacing:.24em;
   text-transform:uppercase;color:var(--acc)}
 .sl{display:block;background:currentColor;aspect-ratio:242/260;
-  -webkit-mask:url(../assets/img/indicio-sello.png) center/contain no-repeat;
-  mask:url(../assets/img/indicio-sello.png) center/contain no-repeat}
+  -webkit-mask:url(../img/indicio-sello.png) center/contain no-repeat;
+  mask:url(../img/indicio-sello.png) center/contain no-repeat}
 
 .b{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:52px;
   padding:.85rem 1.7rem;border:1.5px solid transparent;border-radius:999px;
@@ -99,8 +99,8 @@ body::after{content:'';position:fixed;inset:0;z-index:1300;pointer-events:none;o
 /* Su patrón de volutas, casi invisible, sobre la arena */
 .sec--patron::before{content:'';position:absolute;inset:0;pointer-events:none;
   background:var(--cacao);opacity:.05;
-  -webkit-mask:url(../assets/img/indicio-patron.png) 0 0/190px repeat;
-  mask:url(../assets/img/indicio-patron.png) 0 0/190px repeat}
+  -webkit-mask:url(../img/indicio-patron.png) 0 0/190px repeat;
+  mask:url(../img/indicio-patron.png) 0 0/190px repeat}
 .sec > .w{position:relative}
 
 .cab{max-width:46rem;margin-bottom:clamp(2.4rem,5vw,3.6rem)}
@@ -119,7 +119,7 @@ body::after{content:'';position:fixed;inset:0;z-index:1300;pointer-events:none;o
    completa y el texto va sobre cacao liso, sin depender de lo que haya
    detrás. */
 .hero__foto{position:absolute;inset:0 0 0 36%;z-index:-2;
-  background:url(../assets/img/1.jpg) 68% 46%/cover no-repeat;
+  background:url(../img/1.jpg) 68% 46%/cover no-repeat;
   animation:asienta 2.6s var(--e) both}
 @keyframes asienta{from{transform:scale(1.08)}to{transform:scale(1)}}
 /* El velo oscurece solo donde va el texto: la tarjeta queda a la vista */
@@ -215,7 +215,7 @@ body::after{content:'';position:fixed;inset:0;z-index:1300;pointer-events:none;o
   min-height:min(100vh,1000px);display:flex;align-items:center;padding:clamp(5rem,11vw,8rem) 0;
   --acc:var(--crema)}
 .terapia__foto{position:absolute;inset:0;z-index:-1;
-  background:url(../assets/img/2.jpg) 50% 56%/cover no-repeat}
+  background:url(../img/2.jpg) 50% 56%/cover no-repeat}
 .vano{max-width:35rem;background:var(--olivo);border-radius:var(--arco);text-align:center;
   padding:clamp(5rem,9vw,6.6rem) clamp(1.6rem,4vw,3rem) clamp(2.4rem,4vw,3.2rem)}
 .vano .cab__n{margin-bottom:.4rem}

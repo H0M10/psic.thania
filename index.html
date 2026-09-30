@@ -2,344 +2,117 @@
 <html lang="es-MX">
 <head>
 <meta charset="utf-8">
-<!-- viewport-fit=cover activa env(safe-area-inset-*) para el notch del iPhone -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-
-<title>Thania Huerta · Psicóloga forense y psicoterapeuta en Querétaro</title>
-<meta name="description" content="Psicóloga clínica y forense en Querétaro. Peritajes psicológicos en materia familiar, metapericiales y psicoterapia para adolescentes. Cédula 14661976.">
-<meta name="theme-color" content="#F4EADB">
-
-<!-- ⚠️⚠️ BORRAR ESTA LÍNEA EL DÍA DEL LANZAMIENTO ⚠️⚠️
-     Mientras falten la foto real y la coordenada exacta del consultorio,
-     esto evita que Google lo indexe. Cambia también robots.txt. -->
 <meta name="robots" content="noindex, nofollow">
-
-<link rel="canonical" href="https://h0m10.github.io/psicologa/">
-
-<!-- Redes sociales -->
-<meta property="og:type" content="website">
-<meta property="og:locale" content="es_MX">
-<meta property="og:title" content="Thania Huerta · Psicóloga forense y psicoterapeuta">
-<meta property="og:description" content="Peritajes psicológicos en materia familiar y psicoterapia para adolescentes. Querétaro.">
-<!-- ⚠️ og:image debe ser .jpg o .png — WhatsApp y Facebook NO leen SVG -->
-<meta property="og:image" content="https://h0m10.github.io/psicologa/assets/img/portada.svg">
-<meta name="twitter:card" content="summary_large_image">
-
-<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-
+<meta name="theme-color" content="#513029">
+<title>INDICIO · Psicología forense y psicoterapia · Psic. Thania Huerta</title>
+<meta name="description" content="Un espacio para comprender lo que ocurre, encontrar respuestas y construir nuevas formas de avanzar.">
+<link rel="icon" href="assets/img/indicio-sello.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..700,0..100,0..1;1,9..144,400..700,0..100,0..1&family=Jost:ital,wght@0,300..600;1,300..500&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/img/1.jpg" fetchpriority="high">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<link rel="stylesheet" href="assets/css/styles.css">
-<link rel="stylesheet" href="assets/css/areas.css">
-
-<!-- Ficha de negocio local para Google -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": ["Psychologist", "LocalBusiness"],
-  "name": "Thania Huerta · Psicología clínica y forense",
-  "description": "Peritajes psicológicos en materia familiar, metapericiales y psicoterapia para adolescentes y juventudes.",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Calle Mauricio Garcés 808, Col. La Joya",
-    "addressLocality": "Santiago de Querétaro",
-    "addressRegion": "Qro.",
-    "postalCode": "76180",
-    "addressCountry": "MX"
-  },
-  "geo": { "@type": "GeoCoordinates", "latitude": 20.572439, "longitude": -100.4184025 },
-  "telephone": "+524421375118",
-  "areaServed": "Querétaro",
-  "knowsAbout": ["Psicología forense", "Peritaje psicológico", "Psicoterapia cognitivo-conductual", "Adolescencia"],
-  "openingHoursSpecification": [
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "14:00" },
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "16:00", "closes": "21:00" },
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "13:00" }
-  ]
-}
-</script>
+<link rel="stylesheet" href="assets/css/detalle.css?v=02038269">
+<link rel="stylesheet" href="assets/css/nav.css?v=02038269">
+<link rel="stylesheet" href="assets/css/estilo.css?v=02038269">
+<script>document.documentElement.className += ' js';</script>
 </head>
-
 <body>
-<a class="skip" href="#contenido">Saltar al contenido</a>
 
-<!-- ══════════ ENCABEZADO ══════════ -->
-<header class="header" id="header">
-  <div class="wrap header__in">
-
-    <a class="marca" href="#inicio" aria-label="Inicio">
-      <svg class="marca__sello" viewBox="0 0 48 48" aria-hidden="true">
-        <circle cx="24" cy="24" r="22" fill="#2F6F73"/>
-        <path d="M24 10a14 14 0 0 1 0 28" fill="#D9A63C"/>
-        <circle cx="24" cy="24" r="6.5" fill="#FBF6ED"/>
-        <circle cx="24" cy="24" r="2.6" fill="#B9532F"/>
-      </svg>
-      <span class="marca__txt">
-        <b class="marca__nom" data-cfg="nombreCorto">Thania Huerta</b>
-        <span class="marca__rol" data-cfg="profesion">Psicóloga clínica y forense</span>
-      </span>
-    </a>
-
-    <nav class="nav" aria-label="Principal">
-      <ul class="nav__lista">
-        <li><a class="nav__link" href="#forense">Forense</a></li>
-        <li><a class="nav__link" href="#terapia">Psicoterapia</a></li>
-        <li><a class="nav__link" href="#sobre-mi">Sobre mí</a></li>
-        <li><a class="nav__link" href="#formacion">Formación</a></li>
-        <li><a class="nav__link" href="#ubicacion">Consultorio</a></li>
-      </ul>
-      <span class="header__acciones">
-        <a class="btn btn--sm" data-wa href="#" rel="noopener">Escribir por WhatsApp</a>
-      </span>
-    </nav>
-
-    <a class="llamar-movil" id="llamarMovil" href="#" aria-label="Llamar por teléfono">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M6.5 3h3l1.5 4.5-2 1.5a12 12 0 0 0 6 6l1.5-2 4.5 1.5v3a2 2 0 0 1-2.2 2A17.5 17.5 0 0 1 4.5 5.2 2 2 0 0 1 6.5 3Z"/></svg>
-    </a>
-
+<header class="hero" id="inicio">
+  <div class="hero__foto" role="img" aria-label="La tarjeta de Indicio, sostenida dentro del consultorio"></div>
+  <div class="hero__velo" aria-hidden="true"></div>
+  <div class="w hero__in">
+    <p class="k">Psicología forense y psicoterapia</p>
+    <h1>Un espacio para comprender lo que ocurre, encontrar respuestas y <em>construir nuevas formas de avanzar</em>.</h1>
+    <p class="hero__d">En INDICIO brindo atención psicológica especializada a adolescentes y juventudes, así como servicios de evaluación e intervención en el ámbito de la psicología forense. Colaboro con personas, familias, instituciones y profesionales del ámbito jurídico.</p>
+    <div class="acc">
+      <a class="b b--crema" href="https://wa.me/524421375118?text=Hola%20Thania%2C%20vi%20la%20p%C3%A1gina%20de%20Indicio%20y%20me%20gustar%C3%ADa%20preguntarte%20algo." target="_blank" rel="noopener">Escríbeme por WhatsApp</a>
+      <a class="b b--linea" href="#cotizacion">Solicita una cotización</a>
+    </div>
   </div>
+  <dl class="w hero__cred">
+    <div><dt>Psicóloga</dt><dd>Thania Huerta</dd></div>
+    <div><dt>Cédula profesional</dt><dd>14661976</dd></div>
+    <div><dt>Consejo certificador</dt><dd>25-08-63</dd></div>
+    <div><dt>Consultorio</dt><dd>La Joya, Querétaro</dd></div>
+  </dl>
 </header>
 
-<main id="contenido">
+<div class="franja" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
 
-<!-- ══════════ PORTADA ══════════ -->
-<section class="hero" id="inicio">
-  <svg class="hero__deco" viewBox="0 0 200 200" aria-hidden="true">
-    <circle cx="100" cy="100" r="98" fill="none" stroke="currentColor" stroke-width="1.2"/>
-    <circle cx="100" cy="100" r="72" fill="none" stroke="currentColor" stroke-width="1.2"/>
-    <circle cx="100" cy="100" r="46" fill="none" stroke="currentColor" stroke-width="1.2"/>
-    <path d="M100 2v196M2 100h196M30 30l140 140M170 30L30 170" stroke="currentColor" stroke-width=".7"/>
-  </svg>
+<main>
 
-  <div class="wrap hero__grid">
-    <div class="hero__texto">
-      <p class="hero__kicker reveal">Querétaro · Cédula 14661976</p>
-
-      <h1 class="reveal" style="--d:80ms">
-        Psicología <em>forense</em> y psicoterapia para <em>adolescentes</em>.
-      </h1>
-
-      <p class="hero__sub reveal" style="--d:180ms">
-        Peritajes psicológicos en materia familiar y acompañamiento clínico a
-        adolescentes y juventudes. Dos áreas, un mismo rigor.
-      </p>
-
-      <div class="hero__acciones reveal" style="--d:260ms">
-        <a class="btn" data-wa href="#" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.17 8.17 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.41.09-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.44.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.02 2.56c.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.28Z"/></svg>
-          Escribir por WhatsApp
-        </a>
-        <a class="btn btn--linea" href="#ubicacion">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
-          Ver el consultorio
-        </a>
-      </div>
-
-      <p class="hero__nota reveal" style="--d:340ms">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-        Respondo personalmente al <span data-cfg="telefonoVisible">442 137 5118</span>.
-      </p>
-    </div>
-
-    <figure class="retrato reveal" style="--d:200ms">
-      <div class="retrato__disco" aria-hidden="true"></div>
-      <svg class="retrato__estrella" viewBox="0 0 100 100" aria-hidden="true">
-        <g stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-          <path d="M50 4v92M4 50h92M17 17l66 66M83 17L17 83"/>
-        </g>
-        <circle cx="50" cy="50" r="7" fill="currentColor"/>
-      </svg>
-      <div class="retrato__marco">
-        <!-- ⚠️ SUSTITUIR por la foto real de Thania (retrato vertical 4:5) -->
-        <img src="assets/img/retrato.svg" alt="Retrato de Thania Huerta, psicóloga clínica y forense" width="800" height="1000">
-      </div>
-      <div class="retrato__anillo" aria-hidden="true"></div>
-    </figure>
-  </div>
-
-  <!-- Dos caminos: cada visitante llega buscando una cosa distinta -->
-  <div class="wrap">
-    <div class="caminos reveal" style="--d:400ms">
-      <a class="camino camino--f" href="#forense">
-        <span class="camino__ic">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 3v18M5 7h14M7 7l-3 6h6Zm10 0-3 6h6Z"/><path d="M4 13a3 3 0 0 0 6 0M14 13a3 3 0 0 0 6 0"/></svg>
-        </span>
-        <span class="camino__t">
-          <b>Psicología forense</b>
-          <span>Peritajes en materia familiar y metapericiales, para abogados, juzgados y particulares.</span>
-        </span>
-        <span class="camino__f" aria-hidden="true">→</span>
+<section class="sec sec--cacao" id="empezar">
+  <div class="w">
+    <h2 class="pregunta rv">¿Qué necesitas?</h2>
+    <div class="puertas">
+      <a class="puerta puerta--olivo rv" href="#forense">
+        <span class="sl puerta__sl" aria-hidden="true"></span>
+        <span class="k">Para abogados, juzgados y particulares</span>
+        <span class="puerta__t">Necesito un peritaje psicológico</span>
+        <span class="puerta__d">Siete supuestos en materia familiar, y otros tres servicios.</span>
+        <span class="puerta__b">Ver servicios</span>
       </a>
-      <a class="camino camino--t" href="#terapia">
-        <span class="camino__ic">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 20s-7-4.3-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.7-7 9-7 9Z"/></svg>
-        </span>
-        <span class="camino__t">
-          <b>Psicoterapia</b>
-          <span>Acompañamiento clínico dedicado exclusivamente a adolescentes y juventudes.</span>
-        </span>
-        <span class="camino__f" aria-hidden="true">→</span>
+      <a class="puerta puerta--terracota rv" href="#terapia">
+        <span class="sl puerta__sl" aria-hidden="true"></span>
+        <span class="k">Para adolescentes, juventudes y sus familias</span>
+        <span class="puerta__t">Busco terapia para un adolescente</span>
+        <span class="puerta__d">Diez motivos de consulta, y lo que no esté en la lista también.</span>
+        <span class="puerta__b">Ver psicoterapia</span>
       </a>
     </div>
   </div>
 </section>
 
-<!-- ══════════ FRANJA DE CREDENCIALES ══════════ -->
-<section class="franja" aria-label="Credenciales">
-  <div class="wrap franja__grid">
-    <div class="franja__item">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m22 9-10-5L2 9l10 5 10-5Z"/><path d="M6 11.5V17c0 1.7 2.7 3 6 3s6-1.3 6-3v-5.5"/></svg>
-      <span><strong data-cfg="cedula">14661976</strong><span>Cédula profesional</span></span>
-    </div>
-    <div class="franja__item">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>
-      <span><strong data-cfg="registroForense">25-08-63</strong><span>Consejo Certificador en Psicología Forense</span></span>
-    </div>
-    <div class="franja__item">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 3v18M5 7h14M7 7l-3 6h6Zm10 0-3 6h6Z"/></svg>
-      <span><strong>Materia familiar</strong><span>Periciales y metapericiales</span></span>
-    </div>
-    <div class="franja__item">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
-      <span><strong>Confidencialidad</strong><span>Código ético profesional</span></span>
+<section class="sec sec--arena sec--patron" id="forense">
+  <div class="w">
+    <header class="cab rv">
+      <p class="cab__n">01</p>
+      <p class="k">Servicios</p>
+      <h2>Peritajes psicológicos en materia familiar</h2>
+      <p class="cab__d">En INDICIO se trabaja con perspectiva de derechos humanos, género, infancia y adolescencia, además de la aplicación del análisis de contexto y enfoque diferencial.</p>
+    </header>
+    <ol class="sup rv">
+      <li><span class="sup__n">01</span><span>Guarda y custodia</span></li>
+      <li><span class="sup__n">02</span><span>Establecimiento o modificación de regímenes de convivencia</span></li>
+      <li><span class="sup__n">03</span><span>Valoración de competencias y habilidades parentales</span></li>
+      <li><span class="sup__n">04</span><span>Conflictos derivados de una separación o divorcio</span></li>
+      <li><span class="sup__n">05</span><span>Interferencias parentales</span></li>
+      <li><span class="sup__n">06</span><span>Identificación de factores de riesgo y protección</span></li>
+      <li><span class="sup__n">07</span><span>Afectaciones psicológicas</span></li>
+    </ol>
+    <p class="k otros__k rv">Otros servicios</p>
+    <div class="otros">
+      <article class="otro rv"><h3>Metapericiales</h3><p>Revisión técnica de un dictamen ya emitido, para valorar su método y sus conclusiones.</p></article>
+      <article class="otro rv"><h3>Asesoría en psicología</h3><p>Acompañamiento sobre el componente psicológico de un asunto.</p></article>
+      <article class="otro rv"><h3>Análisis de contexto</h3><p>Lectura del entorno en el que ocurren los hechos, con enfoque diferencial.</p></article>
     </div>
   </div>
 </section>
 
-<!-- ══════════ PSICOLOGÍA FORENSE ══════════ -->
-<section class="seccion area area--forense" id="forense">
-  <div class="wrap">
-    <div class="area__cab reveal">
-      <p class="eyebrow">Área forense</p>
-      <h2 class="titulo-seccion">Peritajes psicológicos en materia familiar</h2>
-      <p class="plomo">
-        Trabajo principalmente en materia familiar, donde el peritaje aporta
-        elementos técnicos para que quien juzga tome decisiones informadas.
-      </p>
+<section class="sec sec--terracota" id="cotizacion">
+  <div class="w coti">
+    <div class="coti__t rv">
+      <p class="k">Solicita una cotización</p>
+      <h2>Cuéntame el asunto y la fecha límite</h2>
+      <p>Te devuelvo el alcance y el costo, sin compromiso. Si lo prefieres, escríbeme directo.</p>
+      <a class="b b--crema" href="https://wa.me/524421375118?text=Hola%20Thania%2C%20vi%20la%20p%C3%A1gina%20de%20Indicio%20y%20me%20gustar%C3%ADa%20preguntarte%20algo." target="_blank" rel="noopener">Escribir por WhatsApp</a>
     </div>
-
-    <div class="serv">
-      <article class="serv__bloque reveal">
-        <h3>Periciales psicológicas en materia familiar</h3>
-        <ul class="serv__lista">
-          <li>Guarda y custodia</li>
-          <li>Establecimiento o modificación de regímenes de convivencia</li>
-          <li>Valoración de competencias y habilidades parentales</li>
-          <li>Conflictos derivados de una separación o divorcio</li>
-          <li>Interferencias parentales</li>
-          <li>Identificación de factores de riesgo y protección</li>
-          <li>Afectaciones psicológicas</li>
-        </ul>
-      </article>
-
-      <article class="serv__bloque reveal" style="--d:120ms">
-        <h3>Metapericiales y análisis técnicos de dictámenes</h3>
-        <p>
-          Revisión de peritajes realizados por otros profesionales para valorar
-          la metodología empleada, el cumplimiento de criterios científicos,
-          técnicos y éticos, la pertinencia de los instrumentos y su relación
-          con los resultados y conclusiones.
-        </p>
-      </article>
-    </div>
-
-    <!-- Cotización -->
-    <div class="cotiza reveal">
-      <div class="cotiza__t">
-        <h3>Cada asunto es distinto</h3>
-        <p>
-          El costo varía según las características y el alcance del caso. Puedes
-          solicitar una cotización personalizada, <strong>sin costo y sin
-          compromiso</strong>, para conocer qué servicio se adapta mejor a tu
-          situación.
-        </p>
-      </div>
-      <div class="cotiza__a">
-        <a class="btn btn--teal" id="btnCotiza" href="#" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm4.52 12.15c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.41.09-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.44.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.02 2.56c.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.28Z"/></svg>
-          Escribir directo por WhatsApp
-        </a>
-        <p class="cotiza__nota">O llena el formulario de abajo si prefieres ordenarlo antes.</p>
-      </div>
-    </div>
-
-    <!-- FORMULARIO DE COTIZACIÓN
-         Responde a la pregunta de Thania sobre añadir un formulario.
-         Es un formulario real, pero al enviarlo abre WhatsApp con las
-         respuestas ya ordenadas: no hace falta servidor ni otro servicio. -->
-    <h3 class="sub-t reveal" style="margin-top:2.5rem" id="cotizacion">Formulario de cotización</h3>
-    <form class="form-cot reveal" id="formCotiza" novalidate>
-      <fieldset>
-        <legend class="vh">Datos para la cotización</legend>
-
-        <div class="campo">
-          <label for="fServicio">Tipo de servicio <span class="req" aria-hidden="true">*</span></label>
-          <select id="fServicio" name="servicio" required>
-            <option value="">Elige una opción…</option>
-            <option>Pericial psicológica en materia familiar</option>
-            <option>Metapericial o análisis técnico de un dictamen</option>
-            <option>No estoy seguro, necesito orientación</option>
-          </select>
-        </div>
-
-        <div class="campo">
-          <label for="fNombre">Tu nombre <span class="req" aria-hidden="true">*</span></label>
-          <input type="text" id="fNombre" name="nombre" required autocomplete="name"
-                 placeholder="Cómo te llamas…">
-        </div>
-
-        <div class="campo">
-          <label for="fMateria">Materia o juzgado</label>
-          <input type="text" id="fMateria" name="materia" autocomplete="off"
-                 placeholder="Por ejemplo: Juzgado Cuarto Familiar…">
-          <span class="ayuda">Si aún no hay juzgado asignado, déjalo vacío.</span>
-        </div>
-
-        <div class="campo">
-          <label for="fDesc">Breve descripción del asunto <span class="req" aria-hidden="true">*</span></label>
-          <textarea id="fDesc" name="descripcion" required
-                    placeholder="Cuéntame en pocas líneas de qué se trata…"></textarea>
-        </div>
-
-        <div class="campo">
-          <label for="fPlazo">¿Hay una fecha límite?</label>
-          <input type="text" id="fPlazo" name="plazo" autocomplete="off"
-                 placeholder="Por ejemplo: audiencia el 12 de octubre…">
-        </div>
-
-        <button class="btn btn--teal" type="submit">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm4.52 12.15c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.41.09-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.44.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.02 2.56c.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.28Z"/></svg>
-          Enviar por WhatsApp
-        </button>
-        <p class="form-aviso" id="formAviso" role="status" aria-live="polite" hidden></p>
-      </fieldset>
-
-      <aside class="form-vista">
-        <h4>Esto es lo que se enviará</h4>
-        <pre id="formSalida"></pre>
-      </aside>
-    </form>
+    <div class="cotiza rv"></div>
   </div>
 </section>
 
-<!-- ══════════ PSICOTERAPIA ══════════ -->
-<section class="seccion area area--terapia" id="terapia">
-  <div class="wrap">
-    <div class="area__cab reveal">
-      <p class="eyebrow">Área clínica</p>
-      <h2 class="titulo-seccion">Psicoterapia para adolescentes y juventudes</h2>
-      <p class="plomo">
-        Mi práctica clínica está dedicada <strong>exclusivamente</strong> a esta
-        etapa. Enfoque cognitivo-conductual, con materiales y actividades
-        adaptados a la personalidad y los intereses de cada persona.
-      </p>
-    </div>
-
-    <h3 class="sub-t reveal">Motivos frecuentes de consulta</h3>
-    <ul class="motivos-lista reveal">
+<section class="terapia" id="terapia">
+  <div class="terapia__foto" role="img" aria-label="Sala del consultorio: sofá verde, sillón de terciopelo y un oso de peluche"></div>
+  <div class="w terapia__in">
+    <div class="vano rv">
+      <p class="cab__n">02</p>
+      <p class="k">Psicoterapia</p>
+      <h2>Temas en los que podemos trabajar</h2>
+      <p class="enfoque">El enfoque terapéutico que se maneja en INDICIO es la Terapia Cognitivo Conductual.</p>
+      <ul class="temas">
       <li>Ansiedad</li>
       <li>Depresión</li>
       <li>Regulación emocional</li>
@@ -350,326 +123,115 @@
       <li>Desarrollo de habilidades parentales y fortalecimiento del vínculo entre madres, padres e hijos</li>
       <li>Educación sexual</li>
       <li>Presión académica</li>
-    </ul>
-
-    <div class="acciones-area reveal">
-      <a class="btn" id="btnTerapia" href="#" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm4.52 12.15c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.41.09-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.44.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.02 2.56c.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.28Z"/></svg>
-        Preguntar por una consulta
-      </a>
+      </ul>
+      <p class="vano__pie">Consulta para adolescentes y juventudes. Si lo que te pasa no está en la lista, escríbeme igual.</p>
     </div>
   </div>
 </section>
 
-<!-- ══════════ SOBRE MÍ ══════════ -->
-<section class="seccion sobre" id="sobre-mi">
-  <div class="wrap sobre__grid">
-    <figure class="sobre__foto reveal">
-      <!-- ⚠️ SUSTITUIR por una foto real, más informal que la de portada -->
-      <img src="assets/img/consultorio.svg" alt="Thania Huerta en su consultorio" width="600" height="800">
-    </figure>
-
-    <div class="sobre__texto reveal" style="--d:120ms">
-      <p class="eyebrow">Sobre mí</p>
-      <h2 class="titulo-seccion">Hola, soy Thania</h2>
-
-      <p style="margin-top:1.6rem">
-        Soy psicóloga con formación y experiencia profesional en los ámbitos
-        clínico y forense. Dentro del área forense trabajo principalmente en
-        materia familiar, lo que me ha permitido comprender las distintas
-        situaciones y necesidades que pueden presentarse en las familias. En el
-        área clínica, mi práctica está dedicada exclusivamente al acompañamiento
-        de adolescentes y juventudes.
-      </p>
-
-      <div class="mas" id="bioMas">
-        <div class="mas__in">
-          <p>
-            Elegí trabajar con esta población porque considero que la
-            adolescencia es un momento decisivo en la construcción de las
-            personas adultas del futuro. Acompañarlos oportunamente puede
-            generar cambios importantes en el presente, mientras desarrollan su
-            identidad y su propia manera de relacionarse con el mundo.
-          </p>
-          <p>
-            Mi experiencia clínica me permite crear espacios de crecimiento,
-            cuestionamiento y desarrollo personal. Por su parte, mi formación
-            forense me ha enseñado a comprender a cada persona dentro de un
-            contexto más amplio. Aunque ambos ámbitos tienen objetivos y límites
-            éticos diferentes, juntos enriquecen mi manera de comprender el
-            comportamiento humano.
-          </p>
-          <p>
-            Disfruto estudiar y mantenerme en constante actualización. Procuro
-            que mi trabajo se sustente en evidencia científica, pero también creo
-            que la terapia puede ser cercana y creativa: disfruto crear
-            materiales y adaptar actividades y herramientas a la personalidad,
-            los intereses y las necesidades de cada adolescente.
-          </p>
-        </div>
+<section class="sec sec--arena sec--patron" id="sobre-mi">
+  <div class="w bio">
+    <figure class="bio__foto rv"><img src="assets/img/3.jpg" alt="Escritorio del consultorio junto a la ventana, con luz natural" loading="lazy" decoding="async" width="1200" height="1600"></figure>
+    <div class="bio__t">
+      <header class="cab rv">
+        <p class="cab__n">03</p>
+        <p class="k">Conoce a tu psic.</p>
+        <h2>Hola, soy Thania</h2>
+      </header>
+      <div class="bio__texto rv">
+        <p>¡Hola! Soy Thania Huerta, psicóloga con formación y experiencia profesional en los ámbitos clínico y forense. Dentro del área forense trabajo principalmente en materia familiar, lo que me ha permitido comprender las distintas situaciones y necesidades que pueden presentarse en las familias. En el área clínica, mi práctica está dedicada al acompañamiento de adolescentes y juventudes.</p>
+        <p>Elegí trabajar con esta población porque considero que es un momento decisivo en la construcción de las personas adultas del futuro. Acompañarlos oportunamente puede generar cambios importantes en el presente, mientras desarrollan su identidad y su propia manera de relacionarse con el mundo.</p>
+        <p>Mi experiencia clínica me permite crear espacios de crecimiento, cuestionamiento y desarrollo personal. Por su parte, mi formación forense me ha enseñado a comprender a cada persona dentro de un contexto más amplio. Aunque ambos ámbitos tienen objetivos y límites diferentes, juntos enriquecen mi manera de comprender el comportamiento humano.</p>
+        <p>Disfruto estudiar y mantenerme en constante actualización. Procuro que mi trabajo se sustente en evidencia científica, pero también creo que la terapia puede ser cercana y creativa: disfruto crear materiales y adaptar actividades y herramientas a la personalidad, los intereses y las necesidades de cada consultante.</p>
+        <blockquote><p>Creo que la terapia puede ser cercana y creativa.</p></blockquote>
       </div>
-
-      <button class="mas__btn" id="bioBtn" type="button" aria-expanded="false" aria-controls="bioMas" hidden>
-        <span class="mas__btn-txt">Leer más</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-      </button>
-
-      <p class="sobre__firma">Thania</p>
     </div>
   </div>
 </section>
 
-<!-- ══════════ FORMACIÓN ══════════ -->
-<section class="seccion formacion" id="formacion">
-  <div class="wrap">
-    <div class="reveal">
-      <p class="eyebrow">Formación</p>
-      <h2 class="titulo-seccion">Dónde me formé</h2>
-      <p class="plomo">
-        Dos trayectorias que se alimentan entre sí, de lo más reciente a lo más
-        antiguo.
-      </p>
-    </div>
-
-    <div class="form__grid">
-      <div class="form__col reveal">
-        <h3 class="form__t form__t--f">Psicología forense</h3>
-        <ol class="form__lista">
-          <li>
-            <span class="form__f">May 2024 – may 2026</span>
-            <b>Maestría en Investigación y Evaluación Criminal y Forense</b>
-            <span class="form__e">Instituto de Ciencia Aplicada</span>
-          </li>
-          <li>
-            <span class="form__f">Mayo 2025</span>
-            <b>Curso de elaboración de peritajes judiciales</b>
-            <span class="form__e">Poder Judicial del Estado de Querétaro</span>
-          </li>
-          <li>
-            <span class="form__f">Mar – may 2025</span>
-            <b>Certificación en Análisis de Contexto en la Investigación Criminal</b>
-            <span class="form__e">Consejo Certificador en Psicología Forense · Ciencia Aplicada</span>
-          </li>
-          <li>
-            <span class="form__f">Feb – may 2025</span>
-            <b>Curso-taller de peritajes psicológicos en casos de guarda y custodia con perspectiva de infancia</b>
-            <span class="form__e">FORENPSIC</span>
-          </li>
-          <li>
-            <span class="form__f">Sep – dic 2024</span>
-            <b>Seminario especializado en disociación y trauma en víctimas de violencia</b>
-            <span class="form__e">Instituto de Ciencia Aplicada</span>
-          </li>
-          <li>
-            <span class="form__f">Julio 2024</span>
-            <b>Curso de elaboración de peritaje psicológico</b>
-            <span class="form__e">Centro de SubjetividadEs Identidad Clínica y Forense</span>
-          </li>
+<section class="sec sec--cacao" id="formacion">
+  <div class="w">
+    <header class="cab rv">
+      <p class="cab__n">04</p>
+      <p class="k">Formación</p>
+      <h2>En qué me he formado</h2>
+    </header>
+    <div class="grupos">
+      <div class="grupo rv">
+        <h3>Formación académica</h3>
+        <ol class="creds">
+      <li><strong>Maestría en Psicoterapia Cognitivo Conductual</strong><span>Centro de Psicoterapia Cognitiva</span><time>Mayo 2026 – en curso</time></li>
+      <li><strong>Maestría en Investigación y Evaluación Criminal y Forense</strong><span>Instituto de Ciencia Aplicada</span><time>Mayo 2024 – mayo 2026</time></li>
+      <li><strong>Licenciatura en Psicología</strong><span>Universidad Mondragón México</span><time>Ago 2020 – may 2024</time></li>
         </ol>
       </div>
-
-      <div class="form__col reveal" style="--d:120ms">
-        <h3 class="form__t form__t--t">Psicoterapia</h3>
-        <ol class="form__lista">
-          <li>
-            <span class="form__f">Ago 2026 – en curso</span>
-            <b>Diplomado en Psicoterapia Infantojuvenil</b>
-            <span class="form__e">CAPCIA · Centro de Atención Psicológica y Capacitación Integral</span>
-          </li>
-          <li>
-            <span class="form__f">May 2026 – en curso</span>
-            <b>Maestría en Psicoterapia Cognitivo Conductual</b>
-            <span class="form__e">Centro de Psicoterapia Cognitiva</span>
-          </li>
-          <li>
-            <span class="form__f">Ene – nov 2025</span>
-            <b>Diplomado en Psicoterapia Cognitivo Conductual</b>
-            <span class="form__e">Universidad Autónoma de Querétaro · IMFAPSI</span>
-          </li>
-          <li>
-            <span class="form__f">Ago 2020 – may 2024</span>
-            <b>Licenciatura en Psicología</b>
-            <span class="form__e">Universidad Mondragón México</span>
-          </li>
+      <div class="grupo rv">
+        <h3>Seminarios, diplomados y certificaciones</h3>
+        <ol class="creds">
+      <li><strong>Diplomado en Psicoterapia Infantojuvenil</strong><span>CAPCIA</span><time>Ago 2026 – en curso</time></li>
+      <li><strong>Diplomado en Psicoterapia Cognitivo Conductual</strong><span>Universidad Autónoma de Querétaro · IMFAPSI</span><time>Ene – nov 2025</time></li>
+      <li><strong>Curso de elaboración de peritajes judiciales</strong><span>Poder Judicial del Estado de Querétaro</span><time>Mayo 2025</time></li>
+      <li><strong>Certificación en Análisis de Contexto en la Investigación Criminal</strong><span>Consejo Certificador en Psicología Forense · Ciencia Aplicada</span><time>Mar – may 2025</time></li>
+      <li><strong>Curso-taller de peritajes psicológicos en casos de guarda y custodia</strong><span>FORENPSIC · con perspectiva de infancia</span><time>Feb – may 2025</time></li>
+      <li><strong>Seminario especializado en disociación y trauma en víctimas de violencia</strong><span>Instituto de Ciencia Aplicada</span><time>Sep – dic 2024</time></li>
+      <li><strong>Curso de elaboración de peritaje psicológico</strong><span>Centro de SubjetividadEs, Identidad Clínica y Forense</span><time>Julio 2024</time></li>
         </ol>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════ UBICACIÓN + MAPA ══════════ -->
-<section class="seccion ubicacion" id="ubicacion">
-  <div class="wrap">
-    <div class="reveal">
-      <p class="eyebrow">El consultorio</p>
-      <h2 class="titulo-seccion">Dónde nos vemos</h2>
-      <p class="plomo">
-        Abre la ruta directo en tu app favorita, o mueve el mapa para reconocer
-        la zona.
-      </p>
-    </div>
-
-    <div class="mapa-caja reveal">
-      <p class="mapa-caja__etq">Consultorio</p>
-      <div id="mapa" role="application" aria-label="Mapa interactivo con la ubicación del consultorio"></div>
-      <button class="mapa-toque" id="mapaToque" type="button" hidden>
-        <span class="mapa-toque__txt">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 11a3 3 0 1 1 6 0c0 2-3 3-3 5"/><circle cx="12" cy="19" r=".6" fill="currentColor"/><circle cx="12" cy="12" r="10"/></svg>
-          Toca para mover el mapa
-        </span>
-      </button>
-      <div class="mapa-fallback" id="mapaFallback">
-        <p><strong>No se pudo cargar el mapa.</strong><br>Abre la ubicación directamente:</p>
-        <p><a class="btn btn--sm btn--teal" id="rutaGoogle2" href="#" target="_blank" rel="noopener">Abrir en Google Maps</a></p>
-      </div>
-    </div>
-
-    <div class="rutas reveal">
-      <a class="btn btn--teal rutas__ppal" id="rutaGoogle" href="#" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
-        Cómo llegar con Google Maps
-      </a>
-      <a class="btn btn--linea" id="rutaWaze" href="#" target="_blank" rel="noopener">Waze</a>
-      <a class="btn btn--linea" id="rutaApple" href="#" target="_blank" rel="noopener">Apple Maps</a>
-    </div>
-
-    <div class="ubicacion__datos reveal">
-      <div class="direccion">
-        <p class="eyebrow" style="margin-bottom:.8rem">Dirección</p>
-        <p class="direccion__dom" data-cfg="calle">Calle Mauricio Garcés 808</p>
-        <p class="direccion__ciudad">
-          <span data-cfg="colonia">Col. La Joya</span><br>
-          <span data-cfg="ciudad">Santiago de Querétaro, Qro.</span>
-        </p>
-        <p class="direccion__ref" id="direccionRef" data-cfg="referencia" hidden></p>
-      </div>
-
-      <div class="direccion direccion--horas">
-        <p class="eyebrow" style="margin-bottom:.8rem">Horarios</p>
-        <ul class="horarios" id="horarios">
-          <!-- Se rellena desde config.js -->
-        </ul>
-      </div>
-    </div>
+<section class="sec sec--mostaza" id="donde">
+  <div class="w">
+    <header class="cab rv">
+      <p class="cab__n">05</p>
+      <p class="k">Consultorio</p>
+      <h2>Dónde nos vemos</h2>
+      <p class="cab__d">Abre la ruta directo en tu aplicación, o mueve el mapa para reconocer la zona.</p>
+    </header>
   </div>
-</section>
-
-<!-- ══════════ CIERRE ══════════ -->
-<section class="seccion cta">
-  <svg class="cta__arcos" viewBox="0 0 1200 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-    <g fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M100 300V150a100 100 0 0 1 200 0v150"/>
-      <path d="M180 300V170a20 20 0 0 1 40 0v130"/>
-      <path d="M900 300V120a150 150 0 0 1 300 0v180"/>
-      <path d="M1000 300V180a50 50 0 0 1 100 0v120"/>
-      <circle cx="600" cy="80" r="46"/><circle cx="600" cy="80" r="24"/>
-    </g>
-  </svg>
-
-  <div class="wrap cta__in">
-    <h2 class="reveal">¿Empezamos por una pregunta?</h2>
-    <p class="reveal" style="--d:100ms">
-      Escríbeme por WhatsApp y te respondo personalmente. Sin formularios
-      y sin compromiso.
-    </p>
-    <div class="cta__acciones reveal" style="--d:200ms">
-      <a class="btn" data-wa href="#" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm4.52 12.15c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.41.09-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.44.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.02 2.56c.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.28Z"/></svg>
-        Escribir por WhatsApp
-      </a>
-      <a class="btn btn--linea" id="btnTel" href="#">Llamar al 442 137 5118</a>
+  <div class="mapa-caja">
+    <div id="mapa" data-lat="20.572439" data-lng="-100.4184025" data-zoom="17" role="application" aria-label="Mapa del consultorio"></div>
+    <button class="mapa-toque" id="mapaToque" type="button" hidden><span>Toca para mover el mapa</span></button>
+    <p class="mapa-aviso" id="mapaAviso" hidden>No se pudo cargar el mapa.</p>
+  </div>
+  <div class="w donde">
+    <div class="donde__t rv">
+      <div class="rutas">
+        <a class="b b--cacao" href="https://www.google.com/maps/dir/?api=1&amp;destination=20.572439,-100.4184025" target="_blank" rel="noopener">Google Maps</a>
+        <a class="b b--linea" href="https://waze.com/ul?ll=20.572439,-100.4184025&amp;navigate=yes" target="_blank" rel="noopener">Waze</a>
+      </div>
+      <dl class="datos">
+        <div><dt>Dirección</dt><dd>Calle Mauricio Garcés 102, Col. La Joya<span>Santiago de Querétaro, Qro.</span></dd></div>
+        <div><dt>Horario</dt><dd>Lunes a viernes, 9:00 a 14:00 y 16:00 a 21:00<span>Sábado de 9:00 a 13:00 · domingo cerrado</span></dd></div>
+        <div><dt>Teléfono</dt><dd><a href="tel:+524421375118">442 137 5118</a><span>También por WhatsApp</span></dd></div>
+        <div><dt>Cédula profesional</dt><dd>14661976<span>Consejo certificador en psicología forense 25-08-63</span></dd></div>
+      </dl>
     </div>
+    <figure class="donde__foto rv"><img src="assets/img/4.jpg" alt="Vista general del consultorio: sofá verde, escritorio de madera y la ventana al fondo" loading="lazy" decoding="async" width="1200" height="1600"></figure>
   </div>
 </section>
 
 </main>
 
-<!-- ══════════ PIE ══════════ -->
 <footer class="pie">
-  <div class="wrap">
-    <div class="pie__grid">
-      <div>
-        <a class="marca" href="#inicio" style="margin-bottom:1rem">
-          <svg class="marca__sello" viewBox="0 0 48 48" aria-hidden="true">
-            <circle cx="24" cy="24" r="22" fill="#2F6F73"/>
-            <path d="M24 10a14 14 0 0 1 0 28" fill="#D9A63C"/>
-            <circle cx="24" cy="24" r="6.5" fill="#FBF6ED"/>
-            <circle cx="24" cy="24" r="2.6" fill="#B9532F"/>
-          </svg>
-          <span class="marca__txt">
-            <b class="marca__nom" data-cfg="nombreCorto">Thania Huerta</b>
-            <span class="marca__rol" data-cfg="profesion">Psicóloga clínica y forense</span>
-          </span>
-        </a>
-        <p class="pie__aviso">
-          Este sitio tiene fines informativos y no sustituye una valoración
-          profesional. Si estás en una situación de riesgo, llama a la
-          <strong>Línea de la Vida: 800 911 2000</strong> (24 h, gratuita en México)
-          o acude al servicio de urgencias más cercano.
-        </p>
-      </div>
-
-      <div>
-        <h4>Secciones</h4>
-        <ul>
-          <li><a href="#forense">Psicología forense</a></li>
-          <li><a href="#terapia">Psicoterapia</a></li>
-          <li><a href="#sobre-mi">Sobre mí</a></li>
-          <li><a href="#formacion">Formación</a></li>
-          <li><a href="#ubicacion">Consultorio</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h4>Contacto</h4>
-        <ul>
-          <li><a data-wa href="#" rel="noopener">WhatsApp</a></li>
-          <li><a id="pieTel" href="#">442 137 5118</a></li>
-          <li><a id="pieMapa" href="#" target="_blank" rel="noopener">Cómo llegar</a></li>
-        </ul>
-      </div>
+  <div class="franja" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="w pie__in">
+    <span class="sl pie__sl" role="img" aria-label="Indicio"></span>
+    <h2>Escríbeme, sin compromiso</h2>
+    <p>Cuéntame qué necesitas y te digo si puedo ayudarte.</p>
+    <div class="acc acc--centro">
+      <a class="b b--mostaza" href="https://wa.me/524421375118?text=Hola%20Thania%2C%20vi%20la%20p%C3%A1gina%20de%20Indicio%20y%20me%20gustar%C3%ADa%20preguntarte%20algo." target="_blank" rel="noopener">Escribir por WhatsApp</a>
+      <a class="b b--linea" href="tel:+524421375118">Llamar al 442 137 5118</a>
     </div>
-
-    <div class="pie__legal">
-      <span>© <span id="anio">2026</span> <span data-cfg="nombre">Thania Huerta</span>. Todos los derechos reservados.</span>
-      <span>Cédula profesional <span data-cfg="cedula">14661976</span></span>
-    </div>
+    <p class="pie__legal">INDICIO · Psicología forense y psicoterapia · Psic. Thania Huerta<br>Cédula profesional 14661976 · Consejo certificador en psicología forense 25-08-63<br>Calle Mauricio Garcés 102, Col. La Joya, Santiago de Querétaro, Qro.</p>
   </div>
 </footer>
 
-<!-- Botón flotante de WhatsApp (escritorio) -->
-<a class="wa-flotante" id="waFlotante" data-wa href="#" rel="noopener" aria-label="Escribir por WhatsApp">
-  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.17 8.17 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.41.09-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.44.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.02 2.56c.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.28Z"/></svg>
-  <span>WhatsApp</span>
-</a>
-
-<!-- ══════════ BARRA DE PESTAÑAS (SOLO CELULAR) ══════════ -->
-<nav class="tabbar" id="tabbar" aria-label="Secciones">
-  <a class="tabbar__item" href="#inicio" data-spy="inicio">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m3 10.5 9-7 9 7"/><path d="M5.5 9v11h13V9"/></svg>
-    <span>Inicio</span>
-  </a>
-  <a class="tabbar__item" href="#forense" data-spy="forense">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 3v18M5 7h14M7 7l-3 6h6Zm10 0-3 6h6Z"/></svg>
-    <span>Forense</span>
-  </a>
-  <a class="tabbar__wa" data-wa href="#" rel="noopener" aria-label="Escribir por WhatsApp">
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm4.52 12.15c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.41.09-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.44.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.02 2.56c.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.28Z"/></svg>
-    <span class="tabbar__wa-txt">Escribir</span>
-  </a>
-  <a class="tabbar__item" href="#terapia" data-spy="terapia">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 20s-7-4.3-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.7-7 9-7 9Z"/></svg>
-    <span>Terapia</span>
-  </a>
-  <a class="tabbar__item" href="#ubicacion" data-spy="ubicacion">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
-    <span>Consultorio</span>
-  </a>
-</nav>
-
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="assets/js/config.js"></script>
-<script src="assets/js/main.js"></script>
-<script src="assets/js/formulario.js"></script>
+<script src="assets/js/mapa.js?v=bfc8cf75"></script>
+<script src="assets/js/nav.js?v=bfc8cf75"></script>
+<script src="assets/js/detalle.js?v=bfc8cf75"></script>
+<script src="assets/js/rv.js?v=bfc8cf75"></script>
 </body>
 </html>

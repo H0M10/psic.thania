@@ -1,11 +1,11 @@
-# ⚠️ MODO BORRADOR — el sitio todavía tiene datos de ejemplo.
-# El día del lanzamiento sustituye todo este archivo por:
+# Modo borrador: la pagina aun no se indexa en buscadores.
+# El dia que se lance con su dominio, sustituye este archivo por:
 #
 #   User-agent: *
 #   Allow: /
-#   Sitemap: https://h0m10.github.io/psicologa/sitemap.xml
+#   Sitemap: https://psic.thania.com.mx/sitemap.xml
 #
-# y borra la etiqueta <meta name="robots" content="noindex, nofollow"> de index.html
+# y borra <meta name="robots" content="noindex, nofollow"> de index.html
 
 User-agent: *
 Disallow: /
