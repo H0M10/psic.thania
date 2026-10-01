@@ -101,10 +101,8 @@
      Se coloca justo después del botón de cotización que ya exista.
      -------------------------------------------------------------------- */
   var CAMPOS = [
-    ['servicio',    'Tipo de servicio'],
     ['nombre',      'Nombre'],
-    ['materia',     'Materia o juzgado'],
-    ['descripcion', 'Descripción del asunto'],
+    ['descripcion', 'Asunto'],
     ['plazo',       'Fecha límite']
   ];
 
@@ -165,19 +163,9 @@
       '<div class="fc__cuerpo" id="fcCuerpo"><div>' +
         '<form novalidate>' +
           '<fieldset>' +
-            '<div class="fc__campo"><label for="fcServicio">Tipo de servicio <span class="req">*</span></label>' +
-              '<select id="fcServicio" name="servicio" required>' +
-                '<option value="">Elige una opción…</option>' +
-                '<option>Pericial psicológica en materia familiar</option>' +
-                '<option>Metapericial o análisis técnico de un dictamen</option>' +
-                '<option>No estoy seguro, necesito orientación</option>' +
-              '</select></div>' +
             '<div class="fc__campo"><label for="fcNombre">Tu nombre <span class="req">*</span></label>' +
               '<input type="text" id="fcNombre" name="nombre" required autocomplete="name" placeholder="Cómo te llamas…"></div>' +
-            '<div class="fc__campo"><label for="fcMateria">Materia o juzgado</label>' +
-              '<input type="text" id="fcMateria" name="materia" placeholder="Por ejemplo: Juzgado Cuarto Familiar…">' +
-              '<span class="fc__ayuda">Si aún no hay juzgado asignado, déjalo vacío.</span></div>' +
-            '<div class="fc__campo"><label for="fcDesc">Breve descripción <span class="req">*</span></label>' +
+            '<div class="fc__campo"><label for="fcDesc">Breve descripción del asunto <span class="req">*</span></label>' +
               '<textarea id="fcDesc" name="descripcion" required placeholder="Cuéntame en pocas líneas de qué se trata…"></textarea></div>' +
             '<div class="fc__campo"><label for="fcPlazo">¿Hay una fecha límite?</label>' +
               '<input type="text" id="fcPlazo" name="plazo" placeholder="Por ejemplo: audiencia el 12 de octubre…"></div>' +

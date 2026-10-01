@@ -234,10 +234,9 @@ body::after{content:'';position:fixed;inset:0;z-index:1300;pointer-events:none;o
 .bio__foto img{width:100%;aspect-ratio:3/4;object-fit:cover}
 /* Con descendiente y no con >: en telefono _detalle.js mete los parrafos
    dentro de .bio-mas para plegarlos, y con > dejaban de tener estilo. */
-.bio__texto p{color:var(--fg2);font-size:1.02rem;max-width:62ch}
+.bio__texto p{color:var(--fg);font-size:1.05rem;line-height:1.7;max-width:62ch}
 .bio__texto p + p,.bio-mas{margin-top:1.1rem}
-.bio__texto > p:first-child{font-family:var(--disp);font-weight:300;font-size:var(--t-lg);
-  line-height:1.5;color:var(--fg);margin-bottom:.4rem}
+/* Todos los parrafos del mismo tamano; solo la cita va en grande */
 .bio__texto blockquote{margin-top:2.4rem;padding-left:1.4rem;border-left:3px solid var(--terracota)}
 .bio__texto blockquote p{font-family:var(--disp);font-weight:300;font-size:var(--t-xl);
   line-height:1.3;color:var(--cacao)}
