@@ -77,7 +77,8 @@
       page_title: 'Página de Gracias - Contacto',
       page_location: window.location.href
     });
-    // Dispara evento de conversión para GA4
+    gtag('config', 'AW-18539616109');
+    // Dispara evento de conversión para GA4 y Google Ads
     gtag('event', 'generate_lead', {
       event_category: 'contacto',
       event_label: 'gracias_page'
