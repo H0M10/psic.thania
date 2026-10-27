@@ -1,0 +1,173 @@
+/* ============================================================================
+   WIDGET DE WHATSAPP FLOTANTE — INDICIO
+   
+   Botón flotante en esquina inferior derecha que:
+   - Se muestra después de 3 segundos
+   - Tiene animación de pulso para atraer atención
+   - Se oculta al hacer scroll hasta el footer (ya hay botones ahí)
+   - En móvil se posiciona arriba de la barra de pestañas
+   - Incluye tooltip con mensaje personalizado
+   ========================================================================== */
+
+.wa-float {
+  position: fixed;
+  right: 1.4rem;
+  bottom: 1.8rem;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  opacity: 0;
+  transform: scale(0.6) translateY(20px);
+  pointer-events: none;
+  transition: opacity .5s cubic-bezier(.22,.8,.2,1), 
+              transform .5s cubic-bezier(.22,.8,.2,1);
+}
+.wa-float.visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  pointer-events: auto;
+}
+.wa-float.oculto {
+  opacity: 0;
+  transform: scale(0.6) translateY(20px);
+  pointer-events: none;
+}
+
+/* ── Tooltip ─────────────────────────────────────────────────────────── */
+.wa-float__tip {
+  background: var(--cacao, #513029);
+  color: var(--crema, #EAE2D7);
+  font-family: var(--txt, 'Raleway', sans-serif);
+  font-size: .88rem;
+  font-weight: 600;
+  line-height: 1.35;
+  padding: .7rem 1.1rem;
+  border-radius: 12px 12px 4px 12px;
+  box-shadow: 0 8px 32px -8px rgba(0,0,0,.35);
+  max-width: 200px;
+  white-space: normal;
+  opacity: 0;
+  transform: translateX(12px);
+  transition: opacity .4s .6s cubic-bezier(.22,.8,.2,1),
+              transform .4s .6s cubic-bezier(.22,.8,.2,1);
+}
+.wa-float.visible .wa-float__tip {
+  opacity: 1;
+  transform: translateX(0);
+}
+/* Flecha del tooltip */
+.wa-float__tip::after {
+  content: '';
+  position: absolute;
+  right: -6px;
+  bottom: 12px;
+  width: 12px;
+  height: 12px;
+  background: var(--cacao, #513029);
+  transform: rotate(45deg);
+  border-radius: 0 2px 0 0;
+}
+
+/* ── Botón ────────────────────────────────────────────────────────────── */
+.wa-float__btn {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #25D366;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 6px 24px -4px rgba(37, 211, 102, .5),
+              0 2px 8px rgba(0,0,0,.15);
+  transition: transform .35s cubic-bezier(.22,.8,.2,1),
+              box-shadow .35s cubic-bezier(.22,.8,.2,1);
+}
+.wa-float__btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 32px -4px rgba(37, 211, 102, .6),
+              0 4px 12px rgba(0,0,0,.2);
+}
+.wa-float__btn:active {
+  transform: scale(0.95);
+}
+.wa-float__btn svg {
+  width: 32px;
+  height: 32px;
+}
+
+/* ── Animación de pulso ──────────────────────────────────────────────── */
+.wa-float__btn::before {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #25D366;
+  opacity: 0;
+  animation: waPulse 2.5s ease-out infinite;
+  z-index: -1;
+}
+@keyframes waPulse {
+  0%   { transform: scale(1);   opacity: .4; }
+  100% { transform: scale(1.8); opacity: 0;  }
+}
+
+/* ── Botón de cerrar tooltip ─────────────────────────────────────────── */
+.wa-float__cerrar {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--arena, #C7B296);
+  color: var(--cacao, #513029);
+  border: none;
+  font-size: .7rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  line-height: 1;
+  transition: transform .2s ease;
+}
+.wa-float__cerrar:hover {
+  transform: scale(1.15);
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .wa-float {
+    /* Arriba de la barra inferior de pestañas */
+    bottom: calc(90px + env(safe-area-inset-bottom, 0px));
+    right: 1rem;
+  }
+  .wa-float__btn {
+    width: 54px;
+    height: 54px;
+  }
+  .wa-float__btn::before {
+    width: 54px;
+    height: 54px;
+  }
+  .wa-float__btn svg {
+    width: 28px;
+    height: 28px;
+  }
+  .wa-float__tip {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wa-float,
+  .wa-float__tip,
+  .wa-float__btn,
+  .wa-float__btn::before {
+    animation: none !important;
+    transition-duration: .001ms !important;
+  }
+}
