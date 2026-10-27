@@ -651,39 +651,39 @@ body {
       </div>
     </section>
 
-    <!-- Accesos Directos Oficiales -->
-    <h3 class="section-title">⚡ Accesos Directos a tus Plataformas</h3>
+    <!-- Herramientas Útiles para Thania -->
+    <h3 class="section-title">⚡ Herramientas de Consulta para Thania</h3>
     <section class="grid-actions">
       
-      <a href="https://analytics.google.com/" target="_blank" rel="noopener" class="action-card">
-        <div class="action-icon icon-ga">📊</div>
-        <div class="action-info">
-          <h4>Google Analytics (GA4)</h4>
-          <p>Ver quién está en la página web en tiempo real y tiempo de lectura.</p>
-        </div>
-      </a>
-
-      <a href="https://ads.google.com/" target="_blank" rel="noopener" class="action-card">
-        <div class="action-icon icon-ads">📈</div>
-        <div class="action-info">
-          <h4>Google Ads</h4>
-          <p>Ver impresiones, clics acumulados y saldo diario consumido.</p>
-        </div>
-      </a>
-
-      <a href="https://web.whatsapp.com/" target="_blank" rel="noopener" class="action-card">
+      <a href="https://wa.me/" target="_blank" rel="noopener" class="action-card">
         <div class="action-icon icon-wa">💬</div>
         <div class="action-info">
-          <h4>WhatsApp Web</h4>
-          <p>Atender solicitudes de pacientes que escribieron desde la página.</p>
+          <h4>Abrir WhatsApp</h4>
+          <p>Revisar mensajes de pacientes que escribieron desde la página web.</p>
+        </div>
+      </a>
+
+      <div class="action-card" style="cursor:pointer;" onclick="copiarMensajeBienvenida()">
+        <div class="action-icon icon-web">📋</div>
+        <div class="action-info">
+          <h4>Copiar Mensaje de Bienvenida</h4>
+          <p id="txt-copiar-info">Clic para copiar texto sugerido para responder a nuevos pacientes.</p>
+        </div>
+      </div>
+
+      <a href="https://maps.google.com/?q=Calle+Mauricio+Garc%C3%A9s+102,+Col.+La+Joya,+Quer%C3%A9taro" target="_blank" rel="noopener" class="action-card">
+        <div class="action-icon icon-ga">📍</div>
+        <div class="action-info">
+          <h4>Ubicación del Consultorio</h4>
+          <p>Calle Mauricio Garcés 102, Col. La Joya (abrir en Google Maps para compartir).</p>
         </div>
       </a>
 
       <a href="https://psic.thania.com.mx/" target="_blank" rel="noopener" class="action-card">
-        <div class="action-icon icon-web">🌐</div>
+        <div class="action-icon icon-ads">🌐</div>
         <div class="action-info">
-          <h4>Tu Sitio Web</h4>
-          <p>psic.thania.com.mx · Revisar la vista pública del consultorio.</p>
+          <h4>Ver tu Página Web</h4>
+          <p>psic.thania.com.mx · Vista que ven los pacientes al buscar psicóloga.</p>
         </div>
       </a>
 
@@ -866,6 +866,22 @@ function cambiarUrlInforme() {
       <span style="font-size:.78rem;color:rgba(234,226,215,0.5);margin-top:.75rem;">(En Looker Studio: Archivo → Insertar informe → Copiar enlace)</span>
     </div>
   `;
+}
+
+function copiarMensajeBienvenida() {
+  var texto = "¡Hola! Gracias por comunicarte con INDICIO · Psicología y Psicoterapia. Soy la Psic. Thania Huerta. Con gusto puedo brindarte información sobre la atención psicológica para adolescentes o peritajes en nuestro consultorio en Col. La Joya, Querétaro. ¿En qué te puedo apoyar el día de hoy?";
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(texto).then(function() {
+      var info = document.getElementById('txt-copiar-info');
+      var original = info.textContent;
+      info.textContent = '✅ ¡Copiado al portapapeles! Listo para pegar en WhatsApp.';
+      info.style.color = 'var(--verde-activo)';
+      setTimeout(function() {
+        info.textContent = original;
+        info.style.color = 'var(--arena)';
+      }, 3500);
+    });
+  }
 }
 
 // Inicializar al cargar
