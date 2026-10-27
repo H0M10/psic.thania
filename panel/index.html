@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="#513029">
+<title>Panel Privado · INDICIO · Psic. Thania Huerta</title>
+<link rel="icon" href="../assets/img/indicio-sello.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/estilo.css">
+<style>
+:root {
+  --bg-panel: #2A1713;
+  --card-bg: rgba(234, 226, 215, 0.05);
+  --card-border: rgba(234, 226, 215, 0.12);
+  --card-border-active: rgba(172, 134, 50, 0.4);
+  --verde-activo: #25D366;
+  --verde-glow: rgba(37, 211, 102, 0.25);
+  --mostaza-glow: rgba(172, 134, 50, 0.25);
+}
+
+body {
+  background: var(--bg-panel);
+  color: var(--crema);
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Pantalla de Bloqueo (Lock Screen) ─────────────────────────────────── */
+#lock-screen {
+  position: fixed;
+  inset: 0;
+  background: var(--cacao);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  transition: opacity .4s ease, visibility .4s ease;
+}
+
+#lock-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.lock-card {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  padding: 2.75rem 2rem;
+  text-align: center;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  animation: fadeInDown .5s ease;
+}
+
+.lock-logo {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1.25rem;
+  background: var(--crema);
+  mask: url(../assets/img/indicio-sello.png) center/contain no-repeat;
+  -webkit-mask: url(../assets/img/indicio-sello.png) center/contain no-repeat;
+}
+
+.lock-card h1 {
+  font-family: var(--disp);
+  font-size: 1.75rem;
+  font-weight: 500;
+  margin-bottom: .25rem;
+  letter-spacing: -.01em;
+}
+
+.lock-card p {
+  font-size: .95rem;
+  color: var(--arena);
+  margin-bottom: 2rem;
+}
+
+.pin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.pin-input-wrap {
+  position: relative;
+}
+
+.pin-input {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1.5px solid var(--card-border);
+  border-radius: 12px;
+  font-family: monospace;
+  font-size: 1.25rem;
+  color: var(--crema);
+  text-align: center;
+  letter-spacing: .2em;
+  transition: border-color .3s, box-shadow .3s;
+  outline: none;
+}
+
+.pin-input:focus {
+  border-color: var(--mostaza);
+  box-shadow: 0 0 0 4px var(--mostaza-glow);
+}
+
+.pin-btn {
+  width: 100%;
+  padding: 1rem;
+  background: var(--mostaza);
+  color: var(--negro);
+  border: none;
+  border-radius: 12px;
+  font-family: var(--txt);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: .03em;
+  transition: transform .2s, background .2s;
+}
+
+.pin-btn:hover {
+  background: #c2983d;
+  transform: translateY(-2px);
+}
+
+.pin-remember {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  font-size: .85rem;
+  color: var(--arena);
+  cursor: pointer;
+}
+
+.pin-error {
+  color: #ff6b6b;
+  font-size: .85rem;
+  min-height: 1.2rem;
+  font-weight: 600;
+}
+
+.shake {
+  animation: shake .4s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Panel Principal (Dashboard) ────────────────────────────────────────── */
+#dashboard {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-bar {
+  background: rgba(42, 23, 19, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--card-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.top-bar-in {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .9rem 0;
+}
+
+.brand-badge {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brand-sello {
+  width: 28px;
+  height: 28px;
+  background: var(--mostaza);
+  mask: url(../assets/img/indicio-sello.png) center/contain no-repeat;
+  -webkit-mask: url(../assets/img/indicio-sello.png) center/contain no-repeat;
+}
+
+.brand-title {
+  font-family: var(--disp);
+  font-size: 1.15rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+
+.badge-status {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .25rem .65rem;
+  background: rgba(37, 211, 102, 0.12);
+  border: 1px solid rgba(37, 211, 102, 0.3);
+  border-radius: 999px;
+  font-family: var(--txt);
+  font-size: .75rem;
+  font-weight: 700;
+  color: var(--verde-activo);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.badge-status::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--verde-activo);
+  box-shadow: 0 0 8px var(--verde-activo);
+}
+
+.btn-salir {
+  background: transparent;
+  border: 1px solid var(--card-border);
+  color: var(--arena);
+  padding: .45rem .9rem;
+  border-radius: 8px;
+  font-size: .85rem;
+  cursor: pointer;
+  transition: all .2s;
+}
+
+.btn-salir:hover {
+  border-color: var(--crema);
+  color: var(--crema);
+}
+
+/* ── Contenido ──────────────────────────────────────────────────────────── */
+.panel-hero {
+  padding: 2.5rem 0 1.5rem;
+}
+
+.panel-hero h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 300;
+  margin-bottom: .4rem;
+}
+
+.panel-hero p {
+  color: var(--arena);
+  font-size: 1.05rem;
+}
+
+.grid-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.metric-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform .3s var(--e), border-color .3s;
+}
+
+.metric-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--card-border-active);
+}
+
+.metric-label {
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--arena);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.metric-val {
+  font-family: var(--disp);
+  font-size: 2.1rem;
+  font-weight: 500;
+  color: var(--crema);
+  line-height: 1.1;
+}
+
+.metric-val.highlight {
+  color: var(--mostaza);
+}
+
+.metric-sub {
+  font-size: .85rem;
+  color: rgba(234, 226, 215, 0.7);
+}
+
+/* ── Acciones Directas 1 Clic ───────────────────────────────────────────── */
+.section-title {
+  font-family: var(--disp);
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+
+.grid-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.action-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  transition: all .3s var(--e);
+}
+
+.action-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--mostaza);
+  transform: translateY(-2px);
+}
+
+.action-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.icon-wa { background: rgba(37, 211, 102, 0.2); color: var(--verde-activo); }
+.icon-ga { background: rgba(234, 134, 0, 0.2); color: #FFA000; }
+.icon-ads { background: rgba(66, 133, 244, 0.2); color: #4285F4; }
+.icon-web { background: rgba(172, 134, 50, 0.2); color: var(--mostaza); }
+
+.action-info h4 {
+  font-family: var(--txt);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: .25rem;
+}
+
+.action-info p {
+  font-size: .85rem;
+  color: var(--arena);
+  line-height: 1.4;
+}
+
+/* ── Visor de Looker Studio / Informe ───────────────────────────────────── */
+.looker-box {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 1.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.looker-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.looker-iframe-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  min-height: 520px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(0,0,0,0.25);
+}
+
+.looker-iframe-wrap iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.looker-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.looker-placeholder h3 {
+  font-size: 1.3rem;
+  margin-bottom: .5rem;
+  color: var(--mostaza);
+}
+
+.looker-placeholder p {
+  max-width: 480px;
+  font-size: .95rem;
+  color: var(--arena);
+  margin-bottom: 1.5rem;
+}
+
+.url-input-group {
+  display: flex;
+  gap: .5rem;
+  width: 100%;
+  max-width: 520px;
+}
+
+.url-input {
+  flex: 1;
+  padding: .75rem 1rem;
+  background: rgba(0,0,0,0.5);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  color: var(--crema);
+  font-size: .85rem;
+  outline: none;
+}
+
+.url-input:focus {
+  border-color: var(--mostaza);
+}
+
+.url-btn {
+  padding: .75rem 1.25rem;
+  background: var(--mostaza);
+  color: var(--negro);
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: .85rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* ── Detalles de Campaña Activa ─────────────────────────────────────────── */
+.details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+@media(max-width: 768px) {
+  .details-grid { grid-template-columns: 1fr; }
+}
+
+.detail-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 1.5rem;
+}
+
+.detail-card h4 {
+  font-family: var(--txt);
+  font-size: .95rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--mostaza);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+
+.tag-item {
+  padding: .35rem .75rem;
+  border-radius: 6px;
+  font-size: .85rem;
+  background: rgba(234, 226, 215, 0.06);
+  border: 1px solid rgba(234, 226, 215, 0.12);
+  color: var(--crema);
+}
+
+.tag-item.positive {
+  background: rgba(37, 211, 102, 0.08);
+  border-color: rgba(37, 211, 102, 0.25);
+  color: #c9ffd9;
+}
+
+.tag-item.negative {
+  background: rgba(255, 107, 107, 0.08);
+  border-color: rgba(255, 107, 107, 0.25);
+  color: #ffc4c4;
+}
+
+.footer-panel {
+  border-top: 1px solid var(--card-border);
+  padding: 2rem 0;
+  font-size: .85rem;
+  color: var(--arena);
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<!-- ═════════════════════════════════════════════════════════════════════════
+     PANTALLA DE ACCESO / BLOQUEO CON PIN
+     ═════════════════════════════════════════════════════════════════════════ -->
+<div id="lock-screen">
+  <div class="lock-card" id="lock-card">
+    <div class="lock-logo"></div>
+    <h1>Panel de Control</h1>
+    <p>INDICIO · Psic. Thania Huerta</p>
+
+    <form class="pin-form" id="pin-form" onsubmit="handlePinSubmit(event)">
+      <div class="pin-input-wrap">
+        <input type="password" 
+               id="pin-input" 
+               class="pin-input" 
+               placeholder="Ingresa tu PIN" 
+               autocomplete="current-password" 
+               autofocus 
+               required>
+      </div>
+      <div class="pin-error" id="pin-error"></div>
+      <button type="submit" class="pin-btn">Desbloquear Panel</button>
+      
+      <label class="pin-remember">
+        <input type="checkbox" id="pin-remember" checked>
+        Recordar acceso en este celular/equipo
+      </label>
+    </form>
+  </div>
+</div>
+
+<!-- ═════════════════════════════════════════════════════════════════════════
+     DASHBOARD PRIVADO DE THANIA
+     ═════════════════════════════════════════════════════════════════════════ -->
+<div id="dashboard">
+
+  <!-- Top Navigation Bar -->
+  <header class="top-bar">
+    <div class="w top-bar-in">
+      <div class="brand-badge">
+        <div class="brand-sello"></div>
+        <div class="brand-title">
+          <span>INDICIO</span>
+          <span class="badge-status">Campaña Activa</span>
+        </div>
+      </div>
+      <button class="btn-salir" onclick="cerrarSesion()">Cerrar sesión</button>
+    </div>
+  </header>
+
+  <main class="w" style="flex:1;">
+    
+    <!-- Hero / Saludo -->
+    <section class="panel-hero">
+      <h2>Hola, Thania 👋</h2>
+      <p>Aquí tienes el resumen en vivo de tu campaña publicitaria y la actividad de tu consultorio en Querétaro.</p>
+    </section>
+
+    <!-- Métricas Rápidas -->
+    <section class="grid-metrics">
+      <div class="metric-card">
+        <div class="metric-label">
+          <span>Presupuesto</span>
+          <span>🔒 Seguro</span>
+        </div>
+        <div class="metric-val highlight">$67.00 <span style="font-size:1rem;color:var(--arena);">MXN/día</span></div>
+        <div class="metric-sub">Tope diario inteligente (~$2,010/mes). Nunca gastará más de esto.</div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-label">
+          <span>Estrategia de Puja</span>
+          <span>🤖 Automática</span>
+        </div>
+        <div class="metric-val">Max Clics</div>
+        <div class="metric-sub">Google busca al costo más bajo a personas que quieren terapia.</div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-label">
+          <span>Llamadas Directas</span>
+          <span>📞 Activo</span>
+        </div>
+        <div class="metric-val" style="font-size:1.6rem;letter-spacing:-.01em;">442 137 5118</div>
+        <div class="metric-sub">Botón de llamada habilitado directo en el buscador.</div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-label">
+          <span>Ubicación</span>
+          <span>📍 Geocercada</span>
+        </div>
+        <div class="metric-val" style="font-size:1.6rem;">Querétaro</div>
+        <div class="metric-sub">Solo se muestra a personas dentro de Santiago de Querétaro.</div>
+      </div>
+    </section>
+
+    <!-- Accesos Directos Oficiales -->
+    <h3 class="section-title">⚡ Accesos Directos a tus Plataformas</h3>
+    <section class="grid-actions">
+      
+      <a href="https://analytics.google.com/" target="_blank" rel="noopener" class="action-card">
+        <div class="action-icon icon-ga">📊</div>
+        <div class="action-info">
+          <h4>Google Analytics (GA4)</h4>
+          <p>Ver quién está en la página web en tiempo real y tiempo de lectura.</p>
+        </div>
+      </a>
+
+      <a href="https://ads.google.com/" target="_blank" rel="noopener" class="action-card">
+        <div class="action-icon icon-ads">📈</div>
+        <div class="action-info">
+          <h4>Google Ads</h4>
+          <p>Ver impresiones, clics acumulados y saldo diario consumido.</p>
+        </div>
+      </a>
+
+      <a href="https://web.whatsapp.com/" target="_blank" rel="noopener" class="action-card">
+        <div class="action-icon icon-wa">💬</div>
+        <div class="action-info">
+          <h4>WhatsApp Web</h4>
+          <p>Atender solicitudes de pacientes que escribieron desde la página.</p>
+        </div>
+      </a>
+
+      <a href="https://psic.thania.com.mx/" target="_blank" rel="noopener" class="action-card">
+        <div class="action-icon icon-web">🌐</div>
+        <div class="action-info">
+          <h4>Tu Sitio Web</h4>
+          <p>psic.thania.com.mx · Revisar la vista pública del consultorio.</p>
+        </div>
+      </a>
+
+    </section>
+
+    <!-- Visor de Looker Studio Embebido -->
+    <section class="looker-box">
+      <div class="looker-header">
+        <div>
+          <h3 style="font-family:var(--disp);font-size:1.4rem;font-weight:400;margin-bottom:.25rem;">📊 Tu Informe Visual en Vivo</h3>
+          <p style="font-size:.9rem;color:var(--arena);">Datos conectados a Google Analytics y Google Ads en tiempo real.</p>
+        </div>
+        <button class="btn-salir" onclick="cambiarUrlInforme()" style="font-size:.8rem;">⚙️ Cambiar Link del Informe</button>
+      </div>
+
+      <div class="looker-iframe-wrap" id="iframe-wrap">
+        <!-- El iframe se inyecta por JS si hay link guardado, sino muestra el placeholder -->
+        <div class="looker-placeholder" id="placeholder-box">
+          <div style="font-size:2.5rem;margin-bottom:.5rem;">📈</div>
+          <h3>Conecta tu Looker Studio aquí</h3>
+          <p>Para ver las gráficas interactivas directamente adentro de tu página sin salir de aquí, pega el enlace para insertar de tu informe de Looker Studio.</p>
+          
+          <div class="url-input-group">
+            <input type="text" id="looker-url-input" class="url-input" placeholder="Pega el enlace de 'Insertar informe' (https://lookerstudio.google.com/embed/...)">
+            <button class="url-btn" onclick="guardarUrlInforme()">Vincular Informe</button>
+          </div>
+          <span style="font-size:.78rem;color:rgba(234,226,215,0.5);margin-top:.75rem;">(En Looker Studio: Archivo → Insertar informe → Copiar enlace)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Transparencia de Campaña: Palabras Clave Activas vs Negativas -->
+    <h3 class="section-title">🛡️ Protección y Configuración de Búsqueda</h3>
+    <section class="details-grid">
+      
+      <div class="detail-card">
+        <h4>🟢 Búsquedas que ACTIVAN tu Anuncio</h4>
+        <p style="font-size:.85rem;color:var(--arena);margin-bottom:1rem;">Personas buscando ayuda en Querétaro verán tu anuncio:</p>
+        <div class="tags-list">
+          <span class="tag-item positive">"psicólogo en querétaro"</span>
+          <span class="tag-item positive">"psicóloga en querétaro"</span>
+          <span class="tag-item positive">"terapia adolescentes"</span>
+          <span class="tag-item positive">"psicólogo para adolescentes"</span>
+          <span class="tag-item positive">"psicólogo cerca de mí"</span>
+          <span class="tag-item positive">"terapia cognitivo conductual querétaro"</span>
+          <span class="tag-item positive">"atención psicológica querétaro"</span>
+          <span class="tag-item positive">"consultorio psicológico querétaro"</span>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <h4>🛑 Búsquedas BLOQUEADAS (Ahorro de dinero)</h4>
+        <p style="font-size:.85rem;color:var(--arena);margin-bottom:1rem;">Si alguien incluye alguna de estas palabras, tu anuncio NO se muestra:</p>
+        <div class="tags-list">
+          <span class="tag-item negative">gratis</span>
+          <span class="tag-item negative">pdf</span>
+          <span class="tag-item negative">carrera</span>
+          <span class="tag-item negative">estudiar</span>
+          <span class="tag-item negative">universidad</span>
+          <span class="tag-item negative">licenciatura</span>
+          <span class="tag-item negative">psiquiatra</span>
+          <span class="tag-item negative">medicamentos</span>
+          <span class="tag-item negative">urgencias</span>
+          <span class="tag-item negative">DIF</span>
+          <span class="tag-item negative">becas</span>
+          <span class="tag-item negative">empleo / trabajo</span>
+          <span class="tag-item negative">cursos</span>
+          <span class="tag-item negative">tareas</span>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="footer-panel">
+    <div class="w">
+      INDICIO · Psicología forense y psicoterapia · Consultorio Privado · Col. La Joya, Querétaro
+    </div>
+  </footer>
+
+</div>
+
+<script>
+// ── AUTENTICACIÓN CON PIN ──────────────────────────────────────────────────
+// PIN secreto definido para Thania
+var PIN_CORRECTO = 'THANIA1000';
+var STORAGE_KEY = 'indicio_panel_auth';
+var LOOKER_STORAGE_KEY = 'indicio_looker_url';
+
+function initAuth() {
+  var savedAuth = localStorage.getItem(STORAGE_KEY) || sessionStorage.getItem(STORAGE_KEY);
+  if (savedAuth === 'true') {
+    mostrarDashboard();
+  } else {
+    document.getElementById('lock-screen').classList.remove('hidden');
+    document.getElementById('pin-input').focus();
+  }
+  cargarInformeGuardado();
+}
+
+function handlePinSubmit(e) {
+  e.preventDefault();
+  var input = document.getElementById('pin-input');
+  var error = document.getElementById('pin-error');
+  var card = document.getElementById('lock-card');
+  var remember = document.getElementById('pin-remember').checked;
+  var val = input.value.trim().toUpperCase();
+
+  if (val === PIN_CORRECTO) {
+    error.textContent = '';
+    if (remember) {
+      localStorage.setItem(STORAGE_KEY, 'true');
+    } else {
+      sessionStorage.setItem(STORAGE_KEY, 'true');
+    }
+    mostrarDashboard();
+  } else {
+    error.textContent = 'PIN incorrecto. Intenta nuevamente.';
+    card.classList.add('shake');
+    input.value = '';
+    setTimeout(function() { card.classList.remove('shake'); }, 400);
+  }
+}
+
+function mostrarDashboard() {
+  var lock = document.getElementById('lock-screen');
+  lock.classList.add('hidden');
+}
+
+function cerrarSesion() {
+  localStorage.removeItem(STORAGE_KEY);
+  sessionStorage.removeItem(STORAGE_KEY);
+  document.getElementById('pin-input').value = '';
+  document.getElementById('pin-error').textContent = '';
+  document.getElementById('lock-screen').classList.remove('hidden');
+  document.getElementById('pin-input').focus();
+}
+
+// ── VINCULACIÓN DEL INFORME LOOKER STUDIO ──────────────────────────────────
+function cargarInformeGuardado() {
+  var url = localStorage.getItem(LOOKER_STORAGE_KEY);
+  if (url) {
+    renderIframe(url);
+  }
+}
+
+function renderIframe(url) {
+  var wrap = document.getElementById('iframe-wrap');
+  wrap.innerHTML = '<iframe src="' + url + '" frameborder="0" style="border:0;width:100%;height:100%;min-height:540px;" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>';
+}
+
+function guardarUrlInforme() {
+  var input = document.getElementById('looker-url-input');
+  var url = input.value.trim();
+  if (!url) return;
+
+  // Si pegó el código iframe completo en vez de la URL, extraer el src
+  var match = url.match(/src=["']([^"']+)["']/);
+  if (match && match[1]) {
+    url = match[1];
+  }
+
+  localStorage.setItem(LOOKER_STORAGE_KEY, url);
+  renderIframe(url);
+}
+
+function cambiarUrlInforme() {
+  localStorage.removeItem(LOOKER_STORAGE_KEY);
+  var wrap = document.getElementById('iframe-wrap');
+  wrap.innerHTML = `
+    <div class="looker-placeholder" id="placeholder-box">
+      <div style="font-size:2.5rem;margin-bottom:.5rem;">📈</div>
+      <h3>Conecta tu Looker Studio aquí</h3>
+      <p>Pega el enlace para insertar tu informe de Looker Studio.</p>
+      <div class="url-input-group">
+        <input type="text" id="looker-url-input" class="url-input" placeholder="https://lookerstudio.google.com/embed/...">
+        <button class="url-btn" onclick="guardarUrlInforme()">Vincular Informe</button>
+      </div>
+      <span style="font-size:.78rem;color:rgba(234,226,215,0.5);margin-top:.75rem;">(En Looker Studio: Archivo → Insertar informe → Copiar enlace)</span>
+    </div>
+  `;
+}
+
+// Inicializar al cargar
+document.addEventListener('DOMContentLoaded', initAuth);
+</script>
+</body>
+</html>
