@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¡Gracias por tu mensaje! · INDICIO · Psic. Thania Huerta</title>
+  <meta name="robots" content="noindex, follow">
+  <link rel="icon" href="../assets/img/indicio-sello.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/estilo.css">
+  <style>
+    .gracias-hero {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 3rem 1.5rem;
+      background: var(--cacao, #231b15);
+      color: var(--crema, #f4eee5);
+    }
+    .gracias-card {
+      max-width: 580px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(234, 226, 215, 0.15);
+      padding: 3rem 2rem;
+      border-radius: 12px;
+    }
+    .gracias-card h1 {
+      font-family: 'Raleway', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      margin-bottom: 1rem;
+      color: var(--mostaza, #d49a3d);
+    }
+    .gracias-card p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: rgba(244, 238, 229, 0.85);
+      margin-bottom: 2rem;
+    }
+    .gracias-acciones {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .gracias-btn {
+      display: inline-block;
+      padding: 0.9rem 1.8rem;
+      background: var(--mostaza, #d49a3d);
+      color: #1a140f;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 6px;
+      transition: opacity 0.2s;
+    }
+    .gracias-btn:hover {
+      opacity: 0.9;
+    }
+    .gracias-btn--sec {
+      background: transparent;
+      color: var(--crema, #f4eee5);
+      border: 1px solid rgba(244, 238, 229, 0.4);
+    }
+  </style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NLFQ0HV0MH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NLFQ0HV0MH', {
+      page_title: 'Página de Gracias - Contacto',
+      page_location: window.location.href
+    });
+    // Dispara evento de conversión para GA4
+    gtag('event', 'generate_lead', {
+      event_category: 'contacto',
+      event_label: 'gracias_page'
+    });
+  </script>
+</head>
+<body>
+  <div class="gracias-hero">
+    <div class="gracias-card">
+      <h1>¡Gracias por contactarme!</h1>
+      <p>He recibido tu solicitud. Responderé a tu mensaje a la brevedad para brindarte toda la información sobre la consulta y los horarios disponibles.</p>
+      <div class="gracias-acciones">
+        <a class="gracias-btn" href="https://wa.me/524421375118?text=Hola%20Thania%2C%20acabo%20de%20visitar%20tu%20p%C3%A1gina%20y%20me%20gustar%C3%ADa%20agendar%20una%20cita.">Escribir por WhatsApp directo</a>
+        <a class="gracias-btn gracias-btn--sec" href="/">Volver a la página principal</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
