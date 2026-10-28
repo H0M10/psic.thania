@@ -65,7 +65,7 @@
       });
 
       // Google Ads Conversion (se configura después con el ID real)
-      if (typeof gtag === 'function' && window.GADS_CONVERSION_ID) {
+      if (typeof gtag === 'function' && window.GADS_CONVERSION_ID && window.GADS_WA_LABEL) {
         gtag('event', 'conversion', {
           send_to: window.GADS_CONVERSION_ID + '/' + (window.GADS_WA_LABEL || ''),
           value: 1.0,
@@ -89,7 +89,7 @@
         conversion_type: 'phone_lead'
       });
 
-      if (typeof gtag === 'function' && window.GADS_CONVERSION_ID) {
+      if (typeof gtag === 'function' && window.GADS_CONVERSION_ID && window.GADS_PHONE_LABEL) {
         gtag('event', 'conversion', {
           send_to: window.GADS_CONVERSION_ID + '/' + (window.GADS_PHONE_LABEL || ''),
           value: 1.0,
@@ -116,7 +116,7 @@
         conversion_type: 'form_lead'
       });
 
-      if (typeof gtag === 'function' && window.GADS_CONVERSION_ID) {
+      if (typeof gtag === 'function' && window.GADS_CONVERSION_ID && window.GADS_FORM_LABEL) {
         gtag('event', 'conversion', {
           send_to: window.GADS_CONVERSION_ID + '/' + (window.GADS_FORM_LABEL || ''),
           value: 5.0,
@@ -250,7 +250,7 @@
           conversion_type: 'calendly_lead'
         });
 
-        if (typeof gtag === 'function' && window.GADS_CONVERSION_ID) {
+        if (typeof gtag === 'function' && window.GADS_CONVERSION_ID && window.GADS_CALENDLY_LABEL) {
           gtag('event', 'conversion', {
             send_to: window.GADS_CONVERSION_ID + '/' + (window.GADS_CALENDLY_LABEL || ''),
             value: 10.0,

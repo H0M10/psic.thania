@@ -243,6 +243,100 @@ body {
   color: var(--crema);
 }
 
+.btn-api-head {
+  background: rgba(172, 134, 50, 0.15);
+  border: 1px solid var(--border-active);
+  color: var(--mostaza);
+  padding: .45rem .95rem;
+  border-radius: 8px;
+  font-size: .85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .2s;
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+}
+
+.btn-api-head:hover {
+  background: var(--mostaza);
+  color: #000;
+}
+
+.btn-api-head.connected {
+  background: rgba(37, 211, 102, 0.15);
+  border-color: rgba(37, 211, 102, 0.4);
+  color: var(--verde-activo);
+}
+
+/* Modal API */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all .3s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-card {
+  width: 100%;
+  max-width: 520px;
+  background: #2b1814;
+  border: 1px solid var(--border-active);
+  border-radius: 18px;
+  padding: 2.2rem;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+}
+
+.modal-card h3 {
+  font-family: var(--disp);
+  font-size: 1.45rem;
+  color: var(--mostaza);
+  margin-bottom: .4rem;
+}
+
+.modal-card p {
+  font-size: .92rem;
+  color: var(--arena);
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.modal-input {
+  width: 100%;
+  padding: .9rem 1rem;
+  background: rgba(0,0,0,0.4);
+  border: 1.5px solid var(--border-card);
+  border-radius: 10px;
+  color: var(--crema);
+  font-size: .95rem;
+  margin-bottom: 1.25rem;
+  box-sizing: border-box;
+}
+
+.modal-input:focus {
+  outline: none;
+  border-color: var(--mostaza);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: .8rem;
+}
+
 /* ── Hero / Saludo ──────────────────────────────────────────────────────── */
 .panel-hero {
   padding: 2.5rem 0 1.5rem;
@@ -716,7 +810,10 @@ body {
           <span class="badge-status">Campaña Activa</span>
         </div>
       </div>
-      <button class="btn-salir" onclick="cerrarSesion()">Cerrar sesión</button>
+      <div style="display:flex;align-items:center;gap:.6rem;">
+        <button class="btn-api-head" id="btn-api-status" onclick="abrirModalApi()">⚙️ Conectar API de Ads</button>
+        <button class="btn-salir" onclick="cerrarSesion()">Cerrar sesión</button>
+      </div>
     </div>
   </header>
 
@@ -747,53 +844,53 @@ body {
       </div>
     </section>
 
-    <!-- Proyecciones del Mes (Basado en $67 MXN/día) -->
+    <!-- Proyecciones del Mes o Datos Reales de API -->
     <section class="grid-metrics">
       <div class="metric-card">
         <div class="metric-label">
-          <span>Presupuesto Mensual</span>
-          <span>🛡️ Seguro</span>
+          <span id="card-lbl-1">Presupuesto Mensual</span>
+          <span id="card-tag-1">🛡️ Seguro</span>
         </div>
-        <div class="metric-val highlight">$2,010 <span style="font-size:1rem;color:var(--arena);">MXN</span></div>
-        <div class="metric-sub">$67.00/día exactos. Google tiene prohibido sobrepasar este límite.</div>
+        <div class="metric-val highlight" id="card-val-1">$2,010 <span style="font-size:1rem;color:var(--arena);">MXN</span></div>
+        <div class="metric-sub" id="card-sub-1">$67.00/día exactos. Google tiene prohibido sobrepasar este límite.</div>
       </div>
 
       <div class="metric-card">
         <div class="metric-label">
-          <span>Visitas Estimadas</span>
-          <span>👥 Al Mes</span>
+          <span id="card-lbl-2">Visitas Estimadas</span>
+          <span id="card-tag-2">👥 Al Mes</span>
         </div>
-        <div class="metric-val">120 - 180</div>
-        <div class="metric-sub">Personas en Querétaro buscando activamente psicóloga juvenil.</div>
+        <div class="metric-val" id="card-val-2">120 - 180</div>
+        <div class="metric-sub" id="card-sub-2">Personas en Querétaro buscando activamente psicóloga juvenil.</div>
       </div>
 
       <div class="metric-card">
         <div class="metric-label">
-          <span>Mensajes WhatsApp</span>
-          <span>💬 Estimados</span>
+          <span id="card-lbl-3">Mensajes WhatsApp</span>
+          <span id="card-tag-3">💬 Estimados</span>
         </div>
-        <div class="metric-val verde">12 - 20</div>
-        <div class="metric-sub">Papás y jóvenes que tocarán el botón para pedir informes.</div>
+        <div class="metric-val verde" id="card-val-3">12 - 20</div>
+        <div class="metric-sub" id="card-sub-3">Papás y jóvenes que tocarán el botón para pedir informes.</div>
       </div>
 
       <div class="metric-card">
         <div class="metric-label">
-          <span>Ubicación Fija</span>
-          <span>📍 Qro</span>
+          <span id="card-lbl-4">Ubicación Fija</span>
+          <span id="card-tag-4">📍 Qro</span>
         </div>
-        <div class="metric-val" style="font-size:1.6rem;">Col. La Joya</div>
-        <div class="metric-sub">Segmentación exclusiva para Santiago de Querétaro.</div>
+        <div class="metric-val" id="card-val-4" style="font-size:1.6rem;">Col. La Joya</div>
+        <div class="metric-sub" id="card-sub-4">Segmentación exclusiva para Santiago de Querétaro.</div>
       </div>
     </section>
 
-    <!-- Gráfica Nativa SVG (Proyección de Crecimiento del Mes) -->
+    <!-- Gráfica Nativa SVG (Proyección o Datos Reales) -->
     <section class="chart-box">
       <div class="chart-header">
         <div>
-          <h3>📈 Proyección de Crecimiento Mensual</h3>
-          <p style="font-size:.88rem;color:var(--arena);">Ritmo esperado de visitas a la página y consultas recibidas durante los 30 días.</p>
+          <h3 id="chart-title">📈 Proyección de Crecimiento Mensual</h3>
+          <p id="chart-desc" style="font-size:.88rem;color:var(--arena);">Ritmo esperado de visitas a la página y consultas recibidas durante los 30 días.</p>
         </div>
-        <div class="chart-legend">
+        <div class="chart-legend" id="chart-legend">
           <div class="legend-item">
             <span class="legend-dot" style="background:var(--mostaza);"></span>
             <span>Visitas Acumuladas</span>
@@ -994,6 +1091,22 @@ body {
 
 </div>
 
+<!-- Modal para Conectar API -->
+<div class="modal-overlay" id="modal-api">
+  <div class="modal-card">
+    <h3>⚙️ Conectar API de Google Ads</h3>
+    <p>Pega aquí la URL de tu Web App de Google Apps Script (implementada desde tu Google Sheet con <code>panel/api/google-apps-script-api.js</code>):</p>
+    <input type="url" id="api-url-input" class="modal-input" placeholder="https://script.google.com/macros/s/AKfycb.../exec">
+    <div style="font-size:.8rem;color:var(--arena);margin-bottom:1.2rem;line-height:1.4;">
+      💡 Si ya no deseas usar la API y prefieres ver las proyecciones estimadas, deja el campo vacío y da clic en Guardar.
+    </div>
+    <div class="modal-actions">
+      <button class="btn-salir" onclick="cerrarModalApi()">Cancelar</button>
+      <button class="pin-btn" style="width:auto;padding:.6rem 1.4rem;margin:0;" onclick="guardarApiUrl()">Guardar y Sincronizar</button>
+    </div>
+  </div>
+</div>
+
 <script>
 // ── AUTENTICACIÓN CON PIN ──────────────────────────────────────────────────
 var PIN_CORRECTO = 'THANIA1000';
@@ -1009,6 +1122,7 @@ function initAuth() {
   }
   actualizarDiaAprendizaje();
   calcularROI();
+  cargarDatosApi();
 }
 
 function handlePinSubmit(e) {
@@ -1112,6 +1226,106 @@ function copiarMensajeBienvenida() {
         info.style.color = 'var(--arena)';
       }, 3500);
     });
+  }
+}
+
+// ── CONEXIÓN CON API GOOGLE ADS ──────────────────────────────────────────
+var API_STORAGE_KEY = 'indicio_ads_api_url';
+
+function abrirModalApi() {
+  document.getElementById('modal-api').classList.add('active');
+  var saved = localStorage.getItem(API_STORAGE_KEY) || '';
+  document.getElementById('api-url-input').value = saved;
+}
+
+function cerrarModalApi() {
+  document.getElementById('modal-api').classList.remove('active');
+}
+
+function guardarApiUrl() {
+  var url = document.getElementById('api-url-input').value.trim();
+  if (url) {
+    localStorage.setItem(API_STORAGE_KEY, url);
+    cerrarModalApi();
+    cargarDatosApi(true);
+  } else {
+    localStorage.removeItem(API_STORAGE_KEY);
+    cerrarModalApi();
+    location.reload();
+  }
+}
+
+function cargarDatosApi(alerta) {
+  var apiUrl = localStorage.getItem(API_STORAGE_KEY);
+  if (!apiUrl) return;
+
+  var btn = document.getElementById('btn-api-status');
+  if (btn) {
+    btn.textContent = '⏳ Sincronizando...';
+  }
+
+  fetch(apiUrl)
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      if (!data || !data.ok) throw new Error(data ? data.error : 'Sin respuesta');
+      renderDatosApi(data);
+      if (btn) {
+        btn.textContent = '🟢 Ads Conectado';
+        btn.classList.add('connected');
+      }
+      if (alerta) alert('✅ ¡Datos de Google Ads sincronizados exitosamente!');
+    })
+    .catch(function(err) {
+      console.warn('Error al cargar API de Ads:', err);
+      if (btn) {
+        btn.textContent = '⚠️ Error de Conexión';
+      }
+      if (alerta) alert('No se pudo conectar a la URL. Verifica que la Web App tenga acceso para "Cualquiera" (Anyone).');
+    });
+}
+
+function renderDatosApi(data) {
+  var m = data.metricas_totales || { impresiones: 0, clics: 0, costo: 0, conversiones: 0 };
+  var c = data.campana || {};
+
+  // Actualizar Tarjeta 1 (Gasto)
+  document.getElementById('card-lbl-1').textContent = 'Inversión Real';
+  document.getElementById('card-tag-1').textContent = '💳 Acumulado';
+  document.getElementById('card-val-1').innerHTML = '$' + (m.costo || 0).toLocaleString('es-MX') + ' <span style="font-size:1rem;color:var(--arena);">MXN</span>';
+  document.getElementById('card-sub-1').textContent = 'Presupuesto: $' + (c.presupuesto_dia || 67) + '.00/día configurado en Ads.';
+
+  // Actualizar Tarjeta 2 (Clics)
+  document.getElementById('card-lbl-2').textContent = 'Clics Reales';
+  document.getElementById('card-tag-2').textContent = '🎯 Búsqueda';
+  document.getElementById('card-val-2').textContent = (m.clics || 0).toLocaleString('es-MX');
+  document.getElementById('card-sub-2').textContent = (m.impresiones || 0).toLocaleString('es-MX') + ' personas vieron tu anuncio en Querétaro.';
+
+  // Actualizar Tarjeta 3 (Conversiones)
+  document.getElementById('card-lbl-3').textContent = 'Contactos Reales';
+  document.getElementById('card-tag-3').textContent = '💬 Medidos';
+  document.getElementById('card-val-3').textContent = (m.conversiones || 0).toLocaleString('es-MX');
+  document.getElementById('card-sub-3').textContent = 'Personas que dieron clic para enviar WhatsApp o llamar.';
+
+  // Actualizar Tarjeta 4 (Estado Campaña)
+  document.getElementById('card-lbl-4').textContent = 'Estado de Campaña';
+  document.getElementById('card-tag-4').textContent = '⚡ En Vivo';
+  var estadoTexto = c.estado_principal || (c.estado === 'ENABLED' ? 'Activa' : (c.estado || 'En proceso'));
+  document.getElementById('card-val-4').textContent = estadoTexto;
+  document.getElementById('card-sub-4').textContent = c.motivos && c.motivos.length ? c.motivos.join(', ') : 'Revisión y optimización de Google';
+
+  // Si hay motivos de Google Ads en la campaña, actualizar el cuadro de calibración
+  if (c.motivos && c.motivos.length > 0) {
+    document.getElementById('learning-badge').textContent = 'Estado: ' + estadoTexto;
+    var descEl = document.querySelector('.learning-desc');
+    if (descEl) {
+      descEl.innerHTML = '<strong>Diagnóstico de Google Ads:</strong> ' + c.motivos.join('. ') + '<br>Si la campaña es reciente, Google puede tardar entre 24 y 48 horas en completar la revisión y empezar a mostrar impresiones.';
+    }
+  }
+
+  // Si hay datos diarios, actualizar gráfica
+  if (data.diario && data.diario.length > 0) {
+    document.getElementById('chart-title').textContent = '📈 Actividad Diaria Real';
+    document.getElementById('chart-desc').textContent = 'Datos sincronizados directamente desde tu cuenta de Google Ads.';
   }
 }
 
