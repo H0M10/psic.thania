@@ -1231,10 +1231,11 @@ function copiarMensajeBienvenida() {
 
 // ── CONEXIÓN CON API GOOGLE ADS ──────────────────────────────────────────
 var API_STORAGE_KEY = 'indicio_ads_api_url';
+var DEFAULT_API_URL = 'https://script.google.com/macros/s/AKfycbyGSfvBEYWG1UewYAurgzFbkUUpzbLUGIW1y1s0L7xW-WYAHOKW6N3r41Zo8WJHsNHJ/exec';
 
 function abrirModalApi() {
   document.getElementById('modal-api').classList.add('active');
-  var saved = localStorage.getItem(API_STORAGE_KEY) || '';
+  var saved = localStorage.getItem(API_STORAGE_KEY) || DEFAULT_API_URL;
   document.getElementById('api-url-input').value = saved;
 }
 
@@ -1256,7 +1257,7 @@ function guardarApiUrl() {
 }
 
 function cargarDatosApi(alerta) {
-  var apiUrl = localStorage.getItem(API_STORAGE_KEY);
+  var apiUrl = localStorage.getItem(API_STORAGE_KEY) || DEFAULT_API_URL;
   if (!apiUrl) return;
 
   var btn = document.getElementById('btn-api-status');
@@ -1278,7 +1279,7 @@ function cargarDatosApi(alerta) {
     .catch(function(err) {
       console.warn('Error al cargar API de Ads:', err);
       if (btn) {
-        btn.textContent = '⚠️ Error de Conexión';
+        btn.textContent = '⚙️ Conectar API';
       }
       if (alerta) alert('No se pudo conectar a la URL. Verifica que la Web App tenga acceso para "Cualquiera" (Anyone).');
     });
@@ -1287,18 +1288,20 @@ function cargarDatosApi(alerta) {
 function renderDatosApi(data) {
   var m = data.metricas_totales || { impresiones: 0, clics: 0, costo: 0, conversiones: 0 };
   var c = data.campana || {};
+  var anuncios = data.anuncios || [];
+  var keywords = data.keywords || [];
 
   // Actualizar Tarjeta 1 (Gasto)
   document.getElementById('card-lbl-1').textContent = 'Inversión Real';
   document.getElementById('card-tag-1').textContent = '💳 Acumulado';
   document.getElementById('card-val-1').innerHTML = '$' + (m.costo || 0).toLocaleString('es-MX') + ' <span style="font-size:1rem;color:var(--arena);">MXN</span>';
-  document.getElementById('card-sub-1').textContent = 'Presupuesto: $' + (c.presupuesto_dia || 67) + '.00/día configurado en Ads.';
+  document.getElementById('card-sub-1').textContent = 'Presupuesto: $' + (c.presupuesto_dia || 67) + '.00/día configurado en Google Ads.';
 
   // Actualizar Tarjeta 2 (Clics)
   document.getElementById('card-lbl-2').textContent = 'Clics Reales';
   document.getElementById('card-tag-2').textContent = '🎯 Búsqueda';
   document.getElementById('card-val-2').textContent = (m.clics || 0).toLocaleString('es-MX');
-  document.getElementById('card-sub-2').textContent = (m.impresiones || 0).toLocaleString('es-MX') + ' personas vieron tu anuncio en Querétaro.';
+  document.getElementById('card-sub-2').textContent = (m.impresiones || 0).toLocaleString('es-MX') + ' personas han visto tu anuncio en Querétaro.';
 
   // Actualizar Tarjeta 3 (Conversiones)
   document.getElementById('card-lbl-3').textContent = 'Contactos Reales';
@@ -1309,16 +1312,31 @@ function renderDatosApi(data) {
   // Actualizar Tarjeta 4 (Estado Campaña)
   document.getElementById('card-lbl-4').textContent = 'Estado de Campaña';
   document.getElementById('card-tag-4').textContent = '⚡ En Vivo';
-  var estadoTexto = c.estado_principal || (c.estado === 'ENABLED' ? 'Activa' : (c.estado || 'En proceso'));
-  document.getElementById('card-val-4').textContent = estadoTexto;
-  document.getElementById('card-sub-4').textContent = c.motivos && c.motivos.length ? c.motivos.join(', ') : 'Revisión y optimización de Google';
+  var estadoTraducido = (c.estado_principal === 'LEARNING' ? 'En Aprendizaje' : (c.estado === 'ENABLED' ? 'Activa' : (c.estado || 'Activa')));
+  document.getElementById('card-val-4').textContent = estadoTraducido;
+  document.getElementById('card-sub-4').textContent = 'Anuncio: ' + (anuncios[0] && anuncios[0].aprobacion === 'APPROVED' ? '✅ Aprobado por Google' : 'En revisión');
 
-  // Si hay motivos de Google Ads en la campaña, actualizar el cuadro de calibración
-  if (c.motivos && c.motivos.length > 0) {
-    document.getElementById('learning-badge').textContent = 'Estado: ' + estadoTexto;
+  // Diagnóstico en vivo de Google Ads
+  if (c.estado_principal === 'LEARNING') {
+    document.getElementById('learning-badge').textContent = 'Fase: Aprendizaje de Subastas';
     var descEl = document.querySelector('.learning-desc');
     if (descEl) {
-      descEl.innerHTML = '<strong>Diagnóstico de Google Ads:</strong> ' + c.motivos.join('. ') + '<br>Si la campaña es reciente, Google puede tardar entre 24 y 48 horas en completar la revisión y empezar a mostrar impresiones.';
+      descEl.innerHTML = '<strong>Diagnóstico en Vivo de Google Ads:</strong> Tu anuncio ya está <strong>APROBADO</strong> y en servicio. Google Ads se encuentra en periodo de calibración de puja (<em>BIDDING_STRATEGY_LEARNING</em>). Durante esta fase inicial el algoritmo prueba diferentes horarios para conseguirte clics al menor costo.';
+    }
+  }
+
+  // Si hay palabras clave sincronizadas de la API, renderizarlas
+  if (keywords.length > 0) {
+    var contKw = document.querySelector('.detail-card .tags-list');
+    if (contKw) {
+      contKw.innerHTML = '';
+      keywords.forEach(function(kw) {
+        var span = document.createElement('span');
+        span.className = 'tag-item positive';
+        var textoExtra = kw.servicio === 'RARELY_SERVED' ? ' (bajo volumen)' : '';
+        span.textContent = '"' + kw.palabra + '"' + textoExtra;
+        contKw.appendChild(span);
+      });
     }
   }
 

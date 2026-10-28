@@ -19,7 +19,7 @@
  */
 
 // ▸ PEGA AQUÍ la URL completa de tu Google Sheet (la misma donde está el Apps Script)
-var SPREADSHEET_URL = 'https://docs.google.com/spreadsheets/d/PEGA_AQUI_EL_ID/edit';
+var SPREADSHEET_URL = 'https://docs.google.com/spreadsheets/d/17dcgNS92GrjlIXGnrytsooA_IPpKL-25QDJv_XSYpQQ/edit?pli=1&gid=0#gid=0';
 
 function main() {
   var ss = SpreadsheetApp.openByUrl(SPREADSHEET_URL);
