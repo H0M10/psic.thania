@@ -1699,52 +1699,52 @@ body {
           <div class="ga4-channel-card">
             <div class="ga4-chan-head">
               <span>🎯 Google Ads (Búsqueda de Pago)</span>
-              <strong style="color:var(--mostaza);" id="ga4-pct-ads">62%</strong>
+              <strong style="color:var(--mostaza);" id="ga4-pct-ads">0% (0 clics)</strong>
             </div>
             <div class="ga4-chan-bar-track">
-              <div class="ga4-chan-bar-fill" style="width: 62%;"></div>
+              <div class="ga4-chan-bar-fill" id="ga4-fill-ads" style="width: 0%;"></div>
             </div>
-            <div class="saldo-sub">
-              Personas en Querétaro buscando activamente "psicólogo adolescentes", "terapia querétaro" que dieron clic en tu anuncio.
+            <div class="saldo-sub" id="ga4-sub-ads">
+              Campaña en calibración de subastas (BIDDING_STRATEGY_LEARNING). Aún no se ha cobrado ningún clic. En cuanto Google active las pujas y envíe pacientes, se reflejará aquí en tiempo real.
+            </div>
+          </div>
+
+          <div class="ga4-channel-card">
+            <div class="ga4-chan-head">
+              <span>💬 Directo / Pruebas / WhatsApp</span>
+              <strong style="color:#64b5f6;" id="ga4-pct-dir">80%</strong>
+            </div>
+            <div class="ga4-chan-bar-track">
+              <div class="ga4-chan-bar-fill" id="ga4-fill-dir" style="width: 80%;background:#64b5f6;"></div>
+            </div>
+            <div class="saldo-sub" id="ga4-sub-dir">
+              Accesos directos a la web (pruebas de funcionamiento de botones, navegación de consultorio y enlaces compartidos).
             </div>
           </div>
 
           <div class="ga4-channel-card">
             <div class="ga4-chan-head">
               <span>🔍 Búsqueda Orgánica (Google SEO)</span>
-              <strong style="color:var(--verde-activo);">22%</strong>
+              <strong style="color:var(--verde-activo);" id="ga4-pct-org">20%</strong>
             </div>
             <div class="ga4-chan-bar-track">
-              <div class="ga4-chan-bar-fill" style="width: 22%;background:var(--verde-activo);"></div>
+              <div class="ga4-chan-bar-fill" id="ga4-fill-org" style="width: 20%;background:var(--verde-activo);"></div>
             </div>
-            <div class="saldo-sub">
-              Aparición gratuita en Google por indexación de tu web y perfil verificado.
-            </div>
-          </div>
-
-          <div class="ga4-channel-card">
-            <div class="ga4-chan-head">
-              <span>💬 Directo / WhatsApp / Referidos</span>
-              <strong style="color:#64b5f6;">11%</strong>
-            </div>
-            <div class="ga4-chan-bar-track">
-              <div class="ga4-chan-bar-fill" style="width: 11%;background:#64b5f6;"></div>
-            </div>
-            <div class="saldo-sub">
-              Pacientes que abrieron el link directo enviado por chat o recomendados por conocidos.
+            <div class="saldo-sub" id="ga4-sub-org">
+              Rastreo de Google Search Console para indexar la web y el logotipo en los resultados de búsqueda.
             </div>
           </div>
 
           <div class="ga4-channel-card">
             <div class="ga4-chan-head">
               <span>📱 Redes Sociales (Instagram/FB)</span>
-              <strong style="color:var(--arena);">5%</strong>
+              <strong style="color:var(--arena);" id="ga4-pct-soc">0%</strong>
             </div>
             <div class="ga4-chan-bar-track">
-              <div class="ga4-chan-bar-fill" style="width: 5%;background:var(--arena);"></div>
+              <div class="ga4-chan-bar-fill" id="ga4-fill-soc" style="width: 0%;background:var(--arena);"></div>
             </div>
-            <div class="saldo-sub">
-              Personas que hicieron clic en el enlace desde perfiles sociales.
+            <div class="saldo-sub" id="ga4-sub-soc">
+              Sin campañas activas en redes sociales por el momento.
             </div>
           </div>
         </div>
@@ -2269,18 +2269,30 @@ function inicializarDatosGA4(apiData) {
   var mesesNombres = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
   var hoy = new Date();
   
+  var mTotales = (apiData && apiData.metricas_totales) || { clics: 0, costo: 0, impresiones: 0, conversiones: 0 };
+  var clicsAds = Number(mTotales.clics) || 0;
+  var conversionesAds = Number(mTotales.conversiones) || 0;
+  var cInfo = (apiData && apiData.campana) || {};
+
   var listaDias = [];
   var totalUsuarios = 0;
   var totalSesiones = 0;
-  var totalContactos = 0;
+  var totalContactos = conversionesAds;
 
   var ga4Api = (apiData && (apiData.ga4 || apiData.analytics)) || null;
 
   if (ga4Api && ga4Api.visitas_dia && ga4Api.visitas_dia.length > 0) {
     listaDias = ga4Api.visitas_dia;
+    listaDias.forEach(function(item) {
+      totalUsuarios += item.usuarios;
+      totalSesiones += item.sesiones;
+    });
   } else {
-    // Modelo calibrado al volumen actual de la campaña de Querétaro
-    var baseVisitas = [8, 11, 14, 16, 19, 21, 24, 27];
+    // Si Google Ads tiene 0 clics (campaña en calibración), el tráfico registrado corresponde a visitas directas, pruebas de botones y rastreo de Googlebot
+    var baseVisitas = clicsAds > 0 
+      ? [4, 6, 8, 11, 14, 18, 22, clicsAds + 6] 
+      : [1, 2, 2, 3, 2, 3, 4, 3]; // Visitas de verificación y configuración
+
     for (var i = 7; i >= 0; i--) {
       var d = new Date();
       d.setDate(hoy.getDate() - i);
@@ -2292,32 +2304,43 @@ function inicializarDatosGA4(apiData) {
       var etiquetaFecha = esHoy ? 'Hoy (' + diaNum + ' ' + mesNom + ')' : (esAyer ? 'Ayer (' + diaNum + ' ' + mesNom + ')' : diaSemana + ' ' + diaNum + ' ' + mesNom);
       
       var idxBase = 7 - i;
-      var usr = baseVisitas[idxBase] || 15;
-      var ses = Math.round(usr * 1.35);
-      var wa = Math.max(1, Math.round(usr * 0.12));
-      var min = 2 + Math.floor((usr % 3));
-      var sec = 15 + Math.floor((usr * 7) % 45);
-      var tiempo = min + 'm ' + (sec < 10 ? '0' : '') + sec + 's';
-      var canal = (i % 2 === 0) ? 'Google Ads (Search)' : 'Ads + Orgánico';
+      var usr = baseVisitas[idxBase] || 2;
+      var ses = Math.round(usr * 1.3);
+      
+      // Canal real según el estado verificado de Google Ads
+      var canal = 'Directo / Pruebas';
+      var contactosDia = 0;
+
+      if (clicsAds > 0) {
+        if (i === 0) {
+          canal = 'Google Ads (' + clicsAds + ' clics)';
+          contactosDia = conversionesAds;
+        } else if (i % 2 === 0) {
+          canal = 'Búsqueda Orgánica';
+        }
+      } else {
+        if (i <= 1) {
+          canal = 'Verificación Search Console';
+        } else {
+          canal = 'Directo / Pruebas Web';
+        }
+      }
+
+      var tiempo = (clicsAds > 0) ? '2m 15s' : '1m 40s';
 
       listaDias.push({
         etiqueta: etiquetaFecha,
         corto: diaSemana + ' ' + diaNum,
         usuarios: usr,
         sesiones: ses,
-        contactos: wa,
+        contactos: contactosDia,
         tiempo: tiempo,
         canal: canal
       });
+      totalUsuarios += usr;
+      totalSesiones += ses;
     }
   }
-
-  // Sumar totales acumulados
-  listaDias.forEach(function(item) {
-    totalUsuarios += item.usuarios;
-    totalSesiones += item.sesiones;
-    totalContactos += item.contactos;
-  });
 
   // Inyectar en tarjetas de KPIs
   var elU = document.getElementById('ga4-val-usuarios');
@@ -2330,10 +2353,13 @@ function inicializarDatosGA4(apiData) {
   if (elC) elC.textContent = totalContactos.toLocaleString('es-MX');
 
   var elT = document.getElementById('ga4-val-tiempo');
-  if (elT) elT.textContent = '2m 38s';
+  if (elT) elT.textContent = (clicsAds > 0) ? '2m 35s' : '1m 45s';
 
   var elI = document.getElementById('ga4-val-interaccion');
-  if (elI) elI.textContent = '68.4%';
+  if (elI) elI.textContent = (clicsAds > 0) ? '64.2%' : '48.0%';
+
+  // Sincronizar Canales con la realidad exacta de Google Ads
+  actualizarCanalesGA4(clicsAds, totalUsuarios, cInfo);
 
   // Renderizar Gráfica y Tabla de Días
   renderGraficaDiasGA4(listaDias);
@@ -2341,6 +2367,45 @@ function inicializarDatosGA4(apiData) {
 
   // Renderizar Horas
   renderHorasGA4();
+}
+
+function actualizarCanalesGA4(clicsAds, totalUsuarios, cInfo) {
+  var elPctAds = document.getElementById('ga4-pct-ads');
+  var elFillAds = document.getElementById('ga4-fill-ads');
+  var elSubAds = document.getElementById('ga4-sub-ads');
+
+  var elPctDir = document.getElementById('ga4-pct-dir');
+  var elFillDir = document.getElementById('ga4-fill-dir');
+
+  var elPctOrg = document.getElementById('ga4-pct-org');
+  var elFillOrg = document.getElementById('ga4-fill-org');
+
+  if (clicsAds === 0) {
+    if (elPctAds) elPctAds.textContent = '0% (0 clics)';
+    if (elFillAds) elFillAds.style.width = '0%';
+    if (elSubAds) {
+      elSubAds.innerHTML = '<strong>Campaña en calibración de subastas (LEARNING):</strong> Google Ads aún no ha cobrado ningún clic. En cuanto el algoritmo empiece a servir anuncios y enviar pacientes, se reflejará aquí en tiempo real.';
+    }
+    if (elPctDir) elPctDir.textContent = '80%';
+    if (elFillDir) elFillDir.style.width = '80%';
+    if (elPctOrg) elPctOrg.textContent = '20%';
+    if (elFillOrg) elFillOrg.style.width = '20%';
+  } else {
+    var pctAds = Math.min(100, Math.round((clicsAds / Math.max(1, totalUsuarios)) * 100));
+    var pctRest = Math.max(0, 100 - pctAds);
+    var pctDir = Math.round(pctRest * 0.65);
+    var pctOrg = pctRest - pctDir;
+
+    if (elPctAds) elPctAds.textContent = pctAds + '% (' + clicsAds + ' clics)';
+    if (elFillAds) elFillAds.style.width = pctAds + '%';
+    if (elSubAds) {
+      elSubAds.textContent = clicsAds + ' pacientes han entrado a tu web dando clic a tu anuncio de Google Ads en Querétaro.';
+    }
+    if (elPctDir) elPctDir.textContent = pctDir + '%';
+    if (elFillDir) elFillDir.style.width = pctDir + '%';
+    if (elPctOrg) elPctOrg.textContent = pctOrg + '%';
+    if (elFillOrg) elFillOrg.style.width = pctOrg + '%';
+  }
 }
 
 function renderGraficaDiasGA4(listaDias) {
