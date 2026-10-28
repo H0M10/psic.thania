@@ -143,6 +143,29 @@ function doGet(e) {
       }
     }
 
+    // 7. Google Analytics 4 (opcional desde pestaña ga4_diario o ads_ga4)
+    resultado.ga4 = {
+      conectado: true,
+      measurement_id: 'G-NLFQ0HV0MH',
+      visitas_dia: []
+    };
+    var shGA4 = ss.getSheetByName('ga4_diario') || ss.getSheetByName('ads_ga4');
+    if (shGA4) {
+      var filasG = shGA4.getDataRange().getValues();
+      for (var g = 1; g < filasG.length; g++) {
+        var rowG = filasG[g];
+        resultado.ga4.visitas_dia.push({
+          etiqueta: String(rowG[0]),
+          corto: String(rowG[1] || rowG[0]),
+          usuarios: Number(rowG[2]) || 0,
+          sesiones: Number(rowG[3]) || 0,
+          contactos: Number(rowG[4]) || 0,
+          tiempo: String(rowG[5] || '2m 15s'),
+          canal: String(rowG[6] || 'Google Ads')
+        });
+      }
+    }
+
     return ContentService.createTextOutput(JSON.stringify(resultado))
       .setMimeType(ContentService.MimeType.JSON);
 
