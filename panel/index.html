@@ -353,6 +353,181 @@ body {
   font-size: 1.05rem;
 }
 
+/* ── Control de Saldo y Facturación (Recarga $2,000 - 16% IVA) ────────── */
+.saldo-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 20px;
+  padding: 1.85rem;
+  margin-bottom: 2.2rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.saldo-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: .75rem;
+  margin-bottom: 1.4rem;
+}
+
+.saldo-title {
+  font-family: var(--disp);
+  font-size: 1.3rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  color: var(--crema);
+}
+
+.badge-saldo {
+  font-family: var(--txt);
+  font-size: .75rem;
+  font-weight: 700;
+  padding: .25rem .65rem;
+  background: rgba(37, 211, 102, 0.12);
+  border: 1px solid rgba(37, 211, 102, 0.3);
+  border-radius: 999px;
+  color: var(--verde-activo);
+  text-transform: uppercase;
+}
+
+.btn-recarga-edit {
+  background: transparent;
+  border: 1px solid var(--border-card);
+  color: var(--arena);
+  padding: .4rem .85rem;
+  border-radius: 8px;
+  font-size: .82rem;
+  cursor: pointer;
+  transition: all .2s;
+}
+
+.btn-recarga-edit:hover {
+  border-color: var(--mostaza);
+  color: var(--mostaza);
+}
+
+.saldo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.4rem;
+}
+
+.saldo-card {
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid var(--border-card);
+  border-radius: 14px;
+  padding: 1.15rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+}
+
+.saldo-card.highlight-card {
+  background: rgba(172, 134, 50, 0.1);
+  border-color: var(--border-active);
+}
+
+.saldo-card.restante-card {
+  background: rgba(37, 211, 102, 0.08);
+  border-color: rgba(37, 211, 102, 0.35);
+}
+
+.saldo-label {
+  font-size: .74rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--arena);
+}
+
+.saldo-val {
+  font-family: var(--disp);
+  font-size: 1.65rem;
+  font-weight: 600;
+  color: var(--crema);
+  line-height: 1.15;
+}
+
+.saldo-val .moneda {
+  font-size: .85rem;
+  font-weight: 400;
+  color: var(--arena);
+}
+
+.saldo-sub {
+  font-size: .78rem;
+  color: rgba(234, 226, 215, 0.65);
+}
+
+.saldo-bar-wrap {
+  background: rgba(0, 0, 0, 0.22);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+}
+
+.saldo-bar-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: .84rem;
+  color: var(--arena);
+  margin-bottom: .6rem;
+}
+
+.saldo-track {
+  width: 100%;
+  height: 10px;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.saldo-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--verde-activo), #ffd166, #ff6b6b);
+  border-radius: 999px;
+  transition: width 1s ease;
+}
+
+/* ── Google Analytics 4 Section ────────────────────────────────────────── */
+.ga4-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 20px;
+  padding: 2rem;
+  margin-bottom: 2.75rem;
+}
+
+.ga4-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.ga4-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.ga4-card {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border-card);
+  border-radius: 14px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+}
+
 /* ── Barra de Aprendizaje Google Ads ───────────────────────────────────── */
 .learning-box {
   background: linear-gradient(135deg, rgba(172, 134, 50, 0.12), rgba(81, 48, 41, 0.4));
@@ -825,6 +1000,60 @@ body {
       <p>Este es tu panel privado de monitoreo para la campaña de <strong>Terapia de Adolescentes</strong> en Querétaro.</p>
     </section>
 
+    <!-- ── Control de Saldo y Facturación (Recarga $2,000 MXN) ────────── -->
+    <section class="saldo-box">
+      <div class="saldo-header">
+        <div class="saldo-title">
+          <span>💳 Control de Saldo y Facturación</span>
+          <span class="badge-saldo" id="badge-saldo-status">Saldo Activo</span>
+        </div>
+        <button class="btn-recarga-edit" onclick="editarRecarga()">⚙️ Ajustar Recarga</button>
+      </div>
+
+      <div class="saldo-grid">
+        <div class="saldo-card">
+          <div class="saldo-label">Depósito Inicial</div>
+          <div class="saldo-val" id="val-deposito-bruto">$2,000.00 <span class="moneda">MXN</span></div>
+          <div class="saldo-sub">Recargado en cuenta</div>
+        </div>
+
+        <div class="saldo-card">
+          <div class="saldo-label">IVA (16% SAT)</div>
+          <div class="saldo-val" style="color:#ff8585;" id="val-iva-sat">-$275.86 <span class="moneda">MXN</span></div>
+          <div class="saldo-sub">Retención fiscal obligatoria</div>
+        </div>
+
+        <div class="saldo-card highlight-card">
+          <div class="saldo-label">Saldo Neto Anuncios</div>
+          <div class="saldo-val highlight" id="val-saldo-neto">$1,724.14 <span class="moneda">MXN</span></div>
+          <div class="saldo-sub">Total disponible para clics</div>
+        </div>
+
+        <div class="saldo-card">
+          <div class="saldo-label">Saldo Gastado</div>
+          <div class="saldo-val" style="color:var(--arena);" id="val-saldo-gastado">$0.00 <span class="moneda">MXN</span></div>
+          <div class="saldo-sub" id="sub-saldo-gastado">0% consumido</div>
+        </div>
+
+        <div class="saldo-card restante-card">
+          <div class="saldo-label">Saldo Restante Actual</div>
+          <div class="saldo-val verde" id="val-saldo-restante">$1,724.14 <span class="moneda">MXN</span></div>
+          <div class="saldo-sub" id="sub-saldo-dias">~25.7 días restantes a $67/día</div>
+        </div>
+      </div>
+
+      <!-- Barra de consumo de saldo -->
+      <div class="saldo-bar-wrap">
+        <div class="saldo-bar-labels">
+          <span>Consumo de saldo: <strong id="lbl-saldo-consumido-pct">0%</strong></span>
+          <span id="lbl-saldo-restante-pct">Queda el <strong>100%</strong> del saldo</span>
+        </div>
+        <div class="saldo-track">
+          <div class="saldo-fill" id="saldo-bar-fill" style="width: 0%;"></div>
+        </div>
+      </div>
+    </section>
+
     <!-- Fase de Calibración / Aprendizaje Dinámica en Código -->
     <section class="learning-box">
       <div class="learning-header">
@@ -1001,6 +1230,50 @@ body {
       </div>
     </section>
 
+    <!-- ── Sección Google Analytics 4 (Medición de Tráfico Web) ───────── -->
+    <h3 class="section-title">📊 Google Analytics 4 (Medición de Tráfico Web)</h3>
+    <section class="ga4-box">
+      <div class="ga4-header">
+        <div>
+          <h4 style="font-family:var(--disp);font-size:1.35rem;font-weight:400;margin-bottom:.3rem;color:var(--crema);">
+            Rastreo Centralizado de Pacientes en Web
+          </h4>
+          <p style="font-size:.88rem;color:var(--arena);">
+            Medición conectada vía Measurement ID <code>G-NLFQ0HV0MH</code> en tiempo real.
+          </p>
+        </div>
+        <a href="https://analytics.google.com/" target="_blank" rel="noopener" class="btn-api-head" style="text-decoration:none;">
+          📈 Abrir GA4 en Tiempo Real ↗
+        </a>
+      </div>
+
+      <div class="ga4-grid">
+        <div class="ga4-card">
+          <div class="saldo-label">Eventos Medidos</div>
+          <div class="saldo-val" style="font-size:1.4rem;color:var(--verde-activo);">5 Tipos</div>
+          <div class="saldo-sub">WhatsApp, llamadas, formulario, scroll (100%) y permanencia.</div>
+        </div>
+
+        <div class="ga4-card">
+          <div class="saldo-label">Objetivo de Lectura</div>
+          <div class="saldo-val" style="font-size:1.4rem;color:var(--mostaza);">&gt; 1:30 min</div>
+          <div class="saldo-sub">Tiempo óptimo para que un paciente lea sobre terapia o peritajes.</div>
+        </div>
+
+        <div class="ga4-card">
+          <div class="saldo-label">Canales de Tráfico</div>
+          <div class="saldo-val" style="font-size:1.4rem;color:var(--crema);">3 Fuentes</div>
+          <div class="saldo-sub">Google Ads (pago), Búsqueda Orgánica y Directo / WhatsApp.</div>
+        </div>
+
+        <div class="ga4-card">
+          <div class="saldo-label">Atribución de Campaña</div>
+          <div class="saldo-val" style="font-size:1.4rem;color:var(--verde-activo);">gclid + UTMs</div>
+          <div class="saldo-sub">Identifica automáticamente si el paciente llegó por tu anuncio.</div>
+        </div>
+      </div>
+    </section>
+
     <!-- Herramientas de Consulta Rápida -->
     <h3 class="section-title">⚡ Herramientas del Consultorio para Thania</h3>
     <section class="grid-actions">
@@ -1122,6 +1395,7 @@ function initAuth() {
   }
   actualizarDiaAprendizaje();
   calcularROI();
+  calcularSaldo(0);
   cargarDatosApi();
 }
 
@@ -1285,11 +1559,107 @@ function cargarDatosApi(alerta) {
     });
 }
 
+// ── CONTROL DE SALDO (RECARGA $2,000 MXN MENOS 16% IVA) ───────────────────
+var RECARGA_STORAGE_KEY = 'indicio_recarga_monto';
+var RECARGA_DEFAULT = 2000;
+
+function obtenerMontoRecarga() {
+  var v = localStorage.getItem(RECARGA_STORAGE_KEY);
+  return v ? parseFloat(v) : RECARGA_DEFAULT;
+}
+
+function calcularSaldo(gastoReal) {
+  gastoReal = gastoReal || 0;
+  window.ULTIMO_GASTO_REAL = gastoReal;
+  var bruto = obtenerMontoRecarga();
+  
+  // En México (Google Ads prepago):
+  // Depósito de $2,000 bruto incluye 16% IVA que retiene el SAT.
+  // Saldo Neto Disponible para clics = $2,000 / 1.16 = $1,724.14 MXN.
+  // Retención 16% IVA = $275.86 MXN.
+  var neto = Math.round((bruto / 1.16) * 100) / 100;
+  var iva = Math.round((bruto - neto) * 100) / 100;
+  var gastado = Math.round(gastoReal * 100) / 100;
+  var restante = Math.max(0, Math.round((neto - gastado) * 100) / 100);
+
+  var pctConsumido = neto > 0 ? Math.min(100, Math.round((gastado / neto) * 100)) : 0;
+  var pctRestante = Math.max(0, 100 - pctConsumido);
+
+  var presupuestoDia = 67;
+  var diasRestantes = presupuestoDia > 0 ? (restante / presupuestoDia).toFixed(1) : '0';
+
+  // Inyectar en elementos de saldo
+  var elBruto = document.getElementById('val-deposito-bruto');
+  if (elBruto) elBruto.innerHTML = '$' + bruto.toLocaleString('es-MX', {minimumFractionDigits:2, maximumFractionDigits:2}) + ' <span class="moneda">MXN</span>';
+
+  var elIva = document.getElementById('val-iva-sat');
+  if (elIva) elIva.innerHTML = '-$' + iva.toLocaleString('es-MX', {minimumFractionDigits:2, maximumFractionDigits:2}) + ' <span class="moneda">MXN</span>';
+
+  var elNeto = document.getElementById('val-saldo-neto');
+  if (elNeto) elNeto.innerHTML = '$' + neto.toLocaleString('es-MX', {minimumFractionDigits:2, maximumFractionDigits:2}) + ' <span class="moneda">MXN</span>';
+
+  var elGastado = document.getElementById('val-saldo-gastado');
+  if (elGastado) elGastado.innerHTML = '$' + gastado.toLocaleString('es-MX', {minimumFractionDigits:2, maximumFractionDigits:2}) + ' <span class="moneda">MXN</span>';
+
+  var elSubG = document.getElementById('sub-saldo-gastado');
+  if (elSubG) elSubG.textContent = pctConsumido + '% consumido de tu saldo neto';
+
+  var elRestante = document.getElementById('val-saldo-restante');
+  if (elRestante) {
+    elRestante.innerHTML = '$' + restante.toLocaleString('es-MX', {minimumFractionDigits:2, maximumFractionDigits:2}) + ' <span class="moneda">MXN</span>';
+    var bStatus = document.getElementById('badge-saldo-status');
+    if (restante <= 150) {
+      elRestante.style.color = '#ff6b6b';
+      if (bStatus) {
+        bStatus.textContent = '⚠️ Saldo Bajo';
+        bStatus.style.color = '#ff6b6b';
+        bStatus.style.borderColor = 'rgba(255,107,107,0.4)';
+        bStatus.style.background = 'rgba(255,107,107,0.12)';
+      }
+    } else {
+      elRestante.style.color = 'var(--verde-activo)';
+      if (bStatus) {
+        bStatus.textContent = 'Saldo Activo';
+        bStatus.style.color = 'var(--verde-activo)';
+        bStatus.style.borderColor = 'rgba(37,211,102,0.3)';
+        bStatus.style.background = 'rgba(37,211,102,0.12)';
+      }
+    }
+  }
+
+  var elSubD = document.getElementById('sub-saldo-dias');
+  if (elSubD) elSubD.textContent = '~' + diasRestantes + ' días de anuncios (a $' + presupuestoDia + '/día)';
+
+  var elLblC = document.getElementById('lbl-saldo-consumido-pct');
+  if (elLblC) elLblC.textContent = pctConsumido + '%';
+
+  var elLblR = document.getElementById('lbl-saldo-restante-pct');
+  if (elLblR) elLblR.innerHTML = 'Queda el <strong>' + pctRestante + '%</strong> ($' + restante.toLocaleString('es-MX', {minimumFractionDigits:2}) + ' MXN)';
+
+  var elBar = document.getElementById('saldo-bar-fill');
+  if (elBar) elBar.style.width = pctConsumido + '%';
+}
+
+function editarRecarga() {
+  var actual = obtenerMontoRecarga();
+  var nuevo = prompt('Ingresa el monto bruto recargado en Google Ads (MXN):', actual);
+  if (nuevo !== null) {
+    var num = parseFloat(nuevo);
+    if (!isNaN(num) && num > 0) {
+      localStorage.setItem(RECARGA_STORAGE_KEY, num);
+      calcularSaldo(window.ULTIMO_GASTO_REAL || 0);
+    }
+  }
+}
+
 function renderDatosApi(data) {
   var m = data.metricas_totales || { impresiones: 0, clics: 0, costo: 0, conversiones: 0 };
   var c = data.campana || {};
   var anuncios = data.anuncios || [];
   var keywords = data.keywords || [];
+
+  // Actualizar Control de Saldo con el gasto real de Google Ads
+  calcularSaldo(m.costo || 0);
 
   // Actualizar Tarjeta 1 (Gasto)
   document.getElementById('card-lbl-1').textContent = 'Inversión Real';
